@@ -1,0 +1,35 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "promotions": {
+    "type": "parent",
+    "children": {
+      "index": {
+        "type": "list",
+        "trigger": "promotions",
+        "onGenerate": "FxShowPromotions",
+        "message": {
+          "title": "Promotions",
+          "caption": "Currently running promotions",
+          "button": "Browse",
+          "sections": []
+        },
+        "response": {
+          "any": "promotions"
+        }
+      },
+      
+      "details": {
+        "type": "buttons",
+        "trigger": "promotion \\d+",
+        "template": "FxGetPromotion",
+        "message": {
+          "title": "{name}",
+          "body": "{duration}",
+          "buttons": [
+            "Promotions", "Menu"
+          ]
+        }
+      }
+    }
+  }
+}

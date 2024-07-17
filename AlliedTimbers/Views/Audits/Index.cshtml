@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AlliedTimbers.Models.Audit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Audit Trail
+            </h3>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.AreaAccessed)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Timestamp)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Action)
+                                    </th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AreaAccessed)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Timestamp)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Action)
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+
+    <script src="/Content/js/data-table.js"></script>
+
+}

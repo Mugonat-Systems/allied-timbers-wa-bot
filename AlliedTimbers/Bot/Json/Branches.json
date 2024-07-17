@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "branches": {
+    "type": "list",
+    "trigger": "branches",
+    "onGenerate": "FxGetBranches",
+    "message": {
+      "title": "Our Branches",
+      "caption": "View our branches",
+      "button": "View",
+      "sections": []
+    },
+    "response": {
+      "any": "branches"
+    }
+  },
+
+  "branch": {
+    "type": "text",
+    "trigger": "branch \\d+",
+    "onGenerate": "FxRetrieveBranch",
+    "message": ""
+  } 
+}

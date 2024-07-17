@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "faqs": {
+    "type": "list",
+    "trigger": "faqs",
+    "onGenerate": "FxDisplayFaqs",
+    "message": {
+      "title": "Frequently Asked Questions",
+      "caption": "",
+      "button": "View FAQ",
+      "sections": []
+    },
+    "response": {
+      "any": "faqs"
+    }
+  },
+
+  "viewFaq": {
+    "type": "text",
+    "trigger": "faq \\d+",
+    "onGenerate": "FxShowFaq",
+    "message": ""
+  },
+
+  "search": {
+    "type": "text",
+    "trigger": "search",
+    "message": "Enter the question you would like to ask the Money Mart team",
+    "response": {
+      "any": "FxGotoAnswer"
+    }
+  },
+
+  "answer": {
+    "type": "list",
+    "onGenerate": "FxFaqSearchResult",
+    "message": {
+      "title": "Search Complete",
+      "caption": "",
+      "button": "Menu",
+      "sections": []
+    }
+  }
+}

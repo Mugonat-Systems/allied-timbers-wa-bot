@@ -1,0 +1,48 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "products": {
+    "type": "parent",
+    "children": {
+      "index": {
+        "type": "list",
+        "trigger": "products",
+        "onGenerate": "FxGetProducts",
+        "message": {
+          "title": "Our Products",
+          "caption": "What we offer, tap below to browse",
+          "button": "Browse",
+          "sections": []
+        },
+        "response": {
+          "any": "products"
+        }
+      },
+      "details": {
+        "type": "buttons",
+        "trigger": "product \\d+",
+        "template": "FxGetProduct",
+        "message": {
+          "title": "{name}",
+          "body": "{description}",
+          "buttons": [
+            "Apply",
+            "Details",
+            "Files"
+          ]
+        }
+      },
+      "info": {
+        "type": "text",
+        "message": "Hello"
+      },
+      "apply": {
+        "type": "text",
+        "message": "Hello"
+      },
+      "files": {
+        "type": "text",
+        "message": "Hello"
+      }
+    }
+  }
+}

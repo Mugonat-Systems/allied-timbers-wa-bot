@@ -1,0 +1,62 @@
+﻿<div
+    id="suggestions"
+    x-data="suggestions"
+    x-show="suggestions"
+    x-transition:enter="transition duration-1000"
+    x-transition:enter-start="transform translate-x-full"
+    x-transition:enter-end="transform translate-x-0"
+    x-transition:leave="transition duration-1000"
+    x-transition:leave-start="transform"
+    x-transition:leave-end="transform -translate-x-full"
+    class="position-absolute w-100">
+    <div class="w-100 h-100 d-flex flex-column bg-white">
+        <div class="box-header">
+            <h3 class="box-title">Quick Messages</h3>
+            <button title="Scroll to bottom" @@click.prevent="chatEvents.dispatch('suggestions', null)" class="btn btn-scroll btn-sm btn-rounded btn-default">
+                <i class="mdi mdi-close"></i>
+            </button>
+        </div>
+
+        <div class="box-body overflow-auto">
+            <div class="list-group list-group-flush">
+                <template x-for="sg in suggestionsList">
+                    <div class="list-group-item text-truncate">
+                        <details>
+                            <summary>
+                                <button @@click="deleteSuggestion(sg.id)" class="btn btn-sm btn-outline-danger">Delete</button>
+                                <span class="text-black-50 font-weight-light" x-text="'/' + sg.key"></span>
+                            </summary>
+                            <p class="m-2 p-3 border rounded" x-text="sg.value"></p>
+                        </details>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="box-footer ">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">/</span>
+                </div>
+                <input x-model="suggestion.trigger" type="text" class="form-control" placeholder="Trigger">
+                <input x-model="suggestion.message" type="text" class="form-control" placeholder="Message">
+                <button :disabled="!(suggestion.message && suggestion.trigger)" @@click="saveSuggestion()" class="btn btn-primary">
+                    <template x-if="status.is(rxStatus.loading, 'save')">
+                        <div class="spinner-border spinner-border-sm" role="status"></div>
+                    </template>
+                    <template x-if="!status.is(rxStatus.loading, 'save')">
+                        <i class="mdi mdi-content-save-settings-outline"></i> Save suggestion
+                    </template>
+                </button>
+            </div>
+        </div>
+    </div>
+    <template x-if="status.is(rxStatus.loading)">
+        <div class="position-absolute w-100 text-center p-5">
+            <div class="d-inline-block rounded-circle p-2 shadow-sm">
+                <div class="spinner-border text-primary bg-white " role="status"></div>
+            </div>
+        </div>
+    </template>
+</div>
+

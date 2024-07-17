@@ -1,0 +1,183 @@
+﻿@model AlliedTimbers.Models.LoanApplication
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style scoped>
+    dd,
+    dl {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*.resource-details {
+        width: 80%;
+        margin: 1em auto;
+    }*/
+
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    dt,
+    b {
+        color: #392C70;
+        font-size: 1.25em;
+        text-transform: uppercase;
+    }
+
+    dd {
+        font-size: 1.125em;
+        font-weight: bold;
+    }
+
+    dd {
+        margin-bottom: 1.125em;
+    }
+
+        dd.description {
+            font-size: 0.9375em;
+            line-height: 1.375em;
+        }
+
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>LoanApplication Details</h4>
+                        <hr />
+
+                        <section  class="resource-details">
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CustomerName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CustomerName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Amount)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Amount)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.IdNo)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.IdNo)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PhoneNo)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PhoneNo)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LoanApproval)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LoanApproval)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DateApplied)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.DateApplied)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CashPlan)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CashPlan)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.BranchName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.BranchName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FilePath)
+                                </dt>
+
+                                <dd>
+                                    @if (Model != null && !string.IsNullOrEmpty(Model.FilePath))
+                                    {
+                                        @Html.HiddenFor(model => model.FilePath)
+                                        <a class="btn btn-primary btn-block" href="@Model.FilePath" target="_blank">
+                                            <i class="mdi mdi-file-pdf"></i> View PaySlip Image
+                                        </a>
+                                    }
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SelfiePath)
+                                </dt>
+
+                                <dd>
+                                    @if (Model != null && !string.IsNullOrEmpty(Model.SelfiePath))
+                                    {
+                                        @Html.HiddenFor(model => model.SelfiePath)
+                                        <a class="btn btn-primary btn-block" href="@Model.SelfiePath" target="_blank">
+                                            <i class="mdi mdi-file-pdf"></i> View Customers Selfie
+                                        </a>
+                                    }
+                                </dd>
+
+                            </dl>
+                        </section>
+                        
+
+                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-warning" })
+                    </div>
+                </div>
+
+            </div>
+        
+
+    </div>
+</div>
+
+<div>
+    
+</div>

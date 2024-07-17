@@ -1,0 +1,143 @@
+﻿<div id="inbox" x-data="inbox"
+     x-show="!history"
+     x-transition:enter="transition duration-1000"
+     x-transition:enter-start="transform translate-x-full"
+     x-transition:enter-end="transform translate-x-0"
+     x-transition:leave="transition duration-1000"
+     x-transition:leave-start="transform"
+     x-transition:leave-end="transform -translate-x-full"
+     @@dragenter="dragStart()"
+     @@drop="dragStop()"
+     class="box box-primary direct-chat direct-chat-primary">
+    <template x-if="status.is(rxStatus.loading)">
+        <div class="position-absolute w-100 text-center p-5" style="z-index: 10">
+            <div class="d-inline-block rounded-circle p-2 shadow-sm">
+                <div class="spinner-border text-primary bg-white " role="status"></div>
+            </div>
+        </div>
+    </template>
+
+    <template x-if="dragging">
+        <div class="is-dragging">
+            <label>
+                Drop here to send file
+                <input @@dragleave="dragStop()" @@input="dragDrop($event.target)" type="file">
+            </label>
+        </div>
+    </template>
+
+    <template x-if="hasChat">
+        <div class="box-header with-border">
+            <h3 class="box-title" x-text="'Chat with ' + chat.name">Direct Chat</h3>
+            <h6 class="box-subtitle" x-text="description()"></h6>
+            <button title="Scroll to bottom" @@click.prevent="chatEvents.dispatch('refresh')" class="btn btn-scroll btn-sm btn-rounded btn-outline-primary">
+                <i class="mdi mdi-refresh"></i>
+            </button>
+            <div class="small">
+                <a href="#" class="small badge badge-outline-primary" @@click.prevent="scroll(false)">Scroll to top</a>
+                <a href="#" class="small badge badge-outline-primary" @@click.prevent="scroll(true)">Scroll to bottom</a>
+                <a href="#" class="small badge badge-outline-primary" @@click.prevent="chatEvents.dispatch('history', chat)">Open history</a>
+            </div>
+        </div>
+    </template>
+
+    <div class="box-body" x-ref="chat">
+        <div class="text-center py-4">
+            <a href="#" class="badge badge-light" @@click.prevent="chatEvents.dispatch('history', chat)">
+                <i class="mdi mdi-history"></i> Show history
+            </a>
+        </div>
+        <template x-for="date in dates">
+            <div>
+                <div class="text-center p-3">
+                    <span class="badge badge-light badge-pill" x-text="date"></span>
+                </div>
+
+                <template x-for="thread in getThread(date)">
+                    <div :key="toMessageId(thread)" class="direct-chat-msg" :class="thread.phone !== chat.phone ? 'right' : ''">
+                        <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name" :class="thread.phone !== chat.phone ? 'pull-right' : 'pull-left'" x-text="thread.sender || 'System'"></span>
+                            <span class="direct-chat-timestamp" :class="thread.phone !== chat.phone ? 'pull-left' : 'pull-right'" x-text="thread.moment"></span>
+                        </div>
+                        <img class="direct-chat-img" src="~/Content/assets/images/avatar.png" alt="Message User Image">
+                        <div @@click="suggestionSave(thread)"  class="direct-chat-text hover-cursor" x-html="toMessageContent(thread)"></div>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+
+    <template x-if="hasChat">
+        <div class="box-footer">
+            <template x-if="files.length">
+                <div class="pb-3 text-nowrap overflow-auto">
+                    <template x-for="attachment in files">
+                        <div class="card d-inline-block">
+                            <img :src="attachment.preview" alt="Attachment Preview" class="card-img" style="height: 100px">
+                            <div class="card-img-overlay">
+                                <div class="d-block text-truncate badge badge-pill badge-dark" style="cursor: pointer" @@click="removeAttachment(attachment.file.name)">
+                                    <i class="mdi mdi-close"></i>
+                                    <span x-text="attachment.file.name"></span>&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <div class="chat-input-group mb-1"
+                 x-trap.noscroll="message.includes('/')"
+                 @@keydown.esc="suggestionReplace({message: ''})"
+                 @@keydown.down="$focus.wrap().next()"
+                 @@keydown.up="$focus.wrap().previous()">
+                <div x-ref="buttons" class="chat-suggestions list-group list-group-flush bg-white" :class="message.includes('/') ? 'active' : ''">
+                    <template x-for="sg in suggestionList()">
+                        <a class="small list-group-item d-block text-decoration-none" :title="sg.message" href="#" @@click.prevent="suggestionReplace(sg)">
+                            <span class="text-truncate d-block">
+                                /<span x-text="sg.trigger"></span>
+                                <span class="text-black-50" x-text="sg.message"></span>
+                            </span>
+                        </a>
+                    </template>
+                    <a class="list-group-item d-block text-decoration-none text-danger small" href="#" @@click.prevent="suggestionReplace({message: ''})">
+                        &times; Close suggestions
+                    </a>
+                </div>
+                <textarea x-ref="chatMessage" @@paste="dragDrop($event.clipboardData)" @@keyup="grow()" x-model="message" placeholder="Type Message ..."></textarea>
+                <div class="chat-input-actions">
+                    <button :disabled="status.is(rxStatus.loading, 'close')" title="Close chat" type="submit" class="chat-btn danger" @@click="send(true)">
+                        <template x-if="status.is(rxStatus.loading, 'close')">
+                            <div class="spinner-border spinner-border-sm" role="status"></div>
+                        </template>
+                        <template x-if="!status.is(rxStatus.loading, 'close')">
+                            <i class="mdi mdi-close"></i> Close
+                        </template>
+                    </button>
+                    <button title="Attach file" class="chat-btn action">
+                        <label class="pick-attachment ">
+                            <i class="mdi mdi-attachment mdi-24px"></i>
+                            <input @@change="dragDrop($event.target)" type="file"/>
+                        </label>
+                    </button>
+                    <button :disabled="status.is(rxStatus.loading, 'send')" type="submit" class="chat-btn primary" @@click="send()">
+                        <template x-if="status.is(rxStatus.loading, 'send')">
+                            <div class="spinner-border spinner-border-sm" role="status"></div>
+                        </template>
+                        <template x-if="!status.is(rxStatus.loading, 'send')">
+                            <i class="mdi mdi-send"></i> Send
+                        </template>
+                    </button>
+                </div>
+            </div>
+            <small class="d-block text-muted font-italic px-2">Pro Tip: To use suggestions type "/", you can configure these suggestions below</small>
+            <small class="d-block text-muted font-italic px-2">Pro Tip: Click on any message to save it as a suggestion</small>
+        </div>
+    </template>
+
+    <template x-if="!hasChat">
+        <div class="box-body bg-white w-100 h-100 d-flex align-items-center justify-content-center text-center position-absolute">
+            <p>Select a chat on the left</p>
+        </div>
+    </template>
+</div>
+

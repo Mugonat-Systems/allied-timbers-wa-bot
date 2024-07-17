@@ -1,0 +1,157 @@
+﻿@model IEnumerable<AlliedTimbers.Models.LoanApplication>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Applications
+            </h3>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        @*@using (Html.BeginForm("DeleteRange", "LoanApplications", FormMethod.Post))
+                        {*@
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        @*<th>
+                                            Select
+                                        </th>*@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ProductName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CustomerName)
+                                        </th>
+                                        @*<th>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </th>*@
+                                        @*<th>
+                            @Html.DisplayNameFor(model => model.IdNo)
+                        </th>*@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PhoneNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LoanApproval)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BranchName)
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            @*<td>
+                                                <input type="checkbox" name="loanIds" value="@item.Id" />
+                                            </td>*@
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ProductName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CustomerName)
+                                            </td>
+                                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>*@
+                                            @*<td>
+                                @Html.DisplayFor(modelItem => item.IdNo)
+                            </td>*@
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhoneNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LoanApproval)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BranchName)
+                                            </td>
+
+                                            <td>
+                                                <span style="display: inline-flex">
+                                                    <button onclick="window.location.href =
+   '@Url.Action("Details", "LoanApplications", new { id = item.Id })' "
+                                                            type="button" class="btn btn-info btn-sm mr-2">
+                                                        Details
+                                                    </button>
+
+                                                    <button onclick="window.location.href =
+'@Url.Action("Edit", "LoanApplications", new { id = item.Id })' "
+                                                            type="button" class="btn btn-outline-primary btn-sm mr-2">
+                                                        Edit
+                                                    </button>
+
+                                                    @*<button type="button" class="btn btn-warning btn-sm" href="#myModal" data-toggle="modal">
+                                        Delete
+                                    </button>*@
+                                                </span>
+
+                                                <!-- Modal for Delete -->
+                                                <div id="myModal" class="modal fade">
+                                                    <div class="modal-dialog modal-confirm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <div class="icon-box">
+                                                                    <i class="material-icons">&#xE5CD;</i>
+                                                                </div>
+                                                                <h4 class="modal-title">Are you sure?</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+
+                                                                <form method="post" action="@Url.Action("Delete", "LoanApplications", new { id = item.Id }) ">
+                                                                    @Html.AntiForgeryToken()
+                                                                    <button type="submit" class="btn btn-danger"> Delete</button>
+                                                                </form>
+
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+
+                            @*<input type="submit" value="Delete Loans" />
+
+                        }*@
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="/Content/js/data-table.js"></script>
+}
+

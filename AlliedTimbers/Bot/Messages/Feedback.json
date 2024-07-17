@@ -1,0 +1,20 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "feedback" : {
+    "type": "text",
+    "trigger": "feedback",
+    "message": "Tell us how you feel you feel about our services",
+    "onReceive": "FxSaveFeedback",
+    "response": {
+      "any": "thankCustomer"
+    }
+  },
+  
+  "thankCustomer": {
+    "type": "buttons",
+    "message":{
+      "body": "Thank you for your feedback",
+      "buttons": ["Menu"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "promotions": {
+    "type": "list",
+    "trigger": "promotions",
+    "onGenerate": "FxShowPromotions",
+    "message": {
+      "title": "Our Promotions",
+      "caption": "What we offer, tap below to browse",
+      "button": "Browse",
+      "sections": []
+    },
+
+    "response": {
+      "any": "promotions"
+    }
+  },
+
+  "details": {
+    "type": "text",
+    "trigger": "promotion \\d+",
+    "onGenerate": "FxGetPromotion",
+    "message": ""
+  }
+}

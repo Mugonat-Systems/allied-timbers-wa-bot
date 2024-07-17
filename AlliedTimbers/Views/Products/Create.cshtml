@@ -1,0 +1,262 @@
+﻿@using AlliedTimbers.Models
+@model AlliedTimbers.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var dbContext = new ApplicationDbContext();
+    //var productFiles = dbContext.ProductFiles.ToList();
+    var productInfo = dbContext.ProductInfos.ToList();
+
+}
+
+<style scoped>
+    input[type=checkbox] + label {
+        display: inline-block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+    }
+
+    input[type=checkbox] {
+        content: "\2714";
+        border: 0.1em solid #000;
+        border-radius: 0.2em;
+        width: 1.5em;
+        height: 1.5em;
+        padding-left: 0.2em;
+        padding-bottom: 0.3em;
+        margin-right: 0.2em;
+        vertical-align: bottom;
+        color: transparent;
+        transition: .2s;
+    }
+
+        input[type=checkbox] + label:active:before {
+            transform: scale(0);
+        }
+
+
+        input[type=checkbox]:checked + label:before {
+            background-color: #b59410;
+            border-color: #b59410;
+            color: #fff;
+            transform: scale(1);
+        }
+
+        input[type=checkbox]:active + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+        }
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "Products", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>Create Product</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Requirements, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Requirements, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Requirements, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    @*<div class="col-md-5">
+            <details class="mb-3">
+                <summary>Select Files</summary>
+                <fieldset>
+
+                    @foreach (var file in productFiles)
+                    {
+                        if (file.IsChecked == true)
+                        {
+                            <input type="checkbox" name="FileIds"
+                                   value=@file.Id id="@file.Id" multiple disabled checked />
+                            <label for=@file.Id>@file.Name</label><br />
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="FileIds"
+                                   value=@file.Id id="@file.Id" multiple />
+                            <label for=@file.Id>@file.Name</label><br />
+
+                        }
+
+                    }
+
+                </fieldset>
+            </details>
+        </div>*@
+
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Loan Application?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsLoan)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Payslip Image?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsImageRequired)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">MukandoApplication?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsMukando)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">SolarApplication?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsSolar)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Trusses?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsTrusses)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Boards and Doors?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsBoards)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Timber Products?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsTimber)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Treated Poles?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsPoles)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <details class="mb-3">
+                                            <summary class="pb-2">Doors?</summary>
+                                            <fieldset>
+                                                @Html.CheckBoxFor(model => model.IsDoors)
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                </div>
+
+                               
+
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <details class="mb-3">
+                                            <summary>Select Information</summary>
+                                            <fieldset>
+
+                                                @foreach (var info in productInfo)
+                                                {
+                                                    @*if (info.IsChecked == true)
+            {
+                <input type="checkbox" name="InfoIds"
+                       value=@info.Id id="@info.Id" multiple disabled checked />
+                <label for=@info.Id>@info.Title</label><br />
+
+            }
+            else
+            {
+                <input type="checkbox" name="InfoIds"
+                       value=@info.Id id="@info.Id" multiple />
+                <label for=@info.Id>@info.Title</label><br />
+            }*@
+
+                                                    <input type="checkbox" name="InfoIds"
+                                                           value=@info.Id id="@info.Id" />
+                                                    <label for=@info.Id>@info.Title</label><br />
+
+                                                }
+
+                                            </fieldset>
+                                        </details>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Save" class="btn btn-outline-warning" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button onclick="window.location.href='@Url.Action("Index", "Products" )'"
+                                                    type="button" class="btn btn-info">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

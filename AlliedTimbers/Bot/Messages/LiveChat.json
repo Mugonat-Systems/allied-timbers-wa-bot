@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "liveChat": {
+    "trigger": "(live chat)|(talk to agent)",
+    "type": "buttons",
+    "message": {
+      "title": "Talk to agent",
+      "body": "Good day, welcome to live chat, you can talk to an agent to get your issues resolved, tap start to begin",
+      "buttons": [
+        "Start",
+        "Cancel"
+      ]
+    },
+    "response": {
+      "cancel": "menu",
+      "start": "startLiveChat"
+    },
+    "onReceive": "FxEnterLiveChat"
+  },
+  "startLiveChat": {
+    "type": "text",
+    "message": "Send your query/issue and wait while we connect you to an agent ☎️",
+    "response": {
+      "any": "concludeLiveChat"
+    },
+    "onReceive": "FxStartLiveChat"
+  },
+  "concludeLiveChat": {
+    "type": "list",
+    "trigger": "rate live chat",
+    "onReceive": "FxRateLiveChat",
+    "message": {
+      "title": "Rate Live Chat",
+      "caption": "We would like to know if you found this chat helpful",
+      "button": "Rate Us",
+      "sections": [
+        {
+          "title": "Chat Rating",
+          "options": [
+            [
+              "Very happy",
+              "⭐⭐⭐⭐⭐ (5 Stars)",
+              "5"
+            ],
+            [
+              "Satisfied",
+              "⭐⭐⭐⭐ (4 Stars)",
+              "4"
+            ],
+            [
+              "Ok",
+              "⭐⭐⭐ (3 Stars)",
+              "3"
+            ],
+            [
+              "Unhappy",
+              "⭐⭐ (2 Stars)",
+              "2"
+            ],
+            [
+              "Disappointed",
+              "⭐ (1 Star)",
+              "1"
+            ]
+          ]
+        }
+      ]
+    },
+    "response": {
+      "any": "thankYou"
+    }
+  },
+  "thankYou": {
+    "type": "text",
+    "message": "Thank your for supporting us, your feedback is always welcome",
+    "response": {
+      "any": "menu"
+    }
+  }
+}

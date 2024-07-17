@@ -1,0 +1,197 @@
+﻿@model IEnumerable<AlliedTimbers.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<style scoped>
+   
+    input[type=checkbox] {
+        display: inline-block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+        content: "\2714";
+        border: 0.1em solid #000;
+        border-radius: 0.2em;
+        width: 1.5em;
+        height: 1.5em;
+        padding-left: 0.2em;
+        padding-bottom: 0.3em;
+        margin-right: 0.2em;
+        vertical-align: bottom;
+        color: blue;
+        transition: .2s;
+    }
+
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Products
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-warning" })
+
+                </ol>
+            </nav>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        @*@using (Html.BeginForm("DeleteRange", "Products", FormMethod.Post))
+                        {*@
+
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                       @* <th>Select</th>*@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Requirements)
+                                        </th>
+                                        <th>@Html.DisplayNameFor(model => model.IsLoan)</th>
+                                        <th>@Html.DisplayNameFor(model => model.IsImageRequired)</th>
+                                        <th></th>
+                                        
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            @*<td>
+                                                <input type="checkbox" name="prodIds" value="@item.Id" />
+                                            </td>*@
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Requirements)
+                                            </td>
+                                            <td>
+
+
+                                                @*@foreach (var applicationForm in item.Files)
+                                {
+                                    @Html.DisplayFor(modelItem => applicationForm.Name)<br/>
+                                }*@
+                                                @Html.DisplayFor(modelItem => item.IsLoan)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IsImageRequired)
+                                            </td>
+                                           
+                                            <td>
+                                                <span style="display: inline-flex">
+
+                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal" href="#infoBackDrop">
+                                                        Info
+                                                    </button>
+
+                                                    <button onclick="window.location.href =
+                         '@Url.Action("Edit", "Products", new { id = item.Id })' "
+                                                            type="button" class="btn btn-outline-primary btn-sm mr-2">
+                                                        Edit
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-warning btn-sm" href="#myModal" data-toggle="modal">
+                                                        Delete
+                                                    </button>
+                                                </span>
+
+                                                <!-- Modal for Delete -->
+                                                <div id="myModal" class="modal fade">
+                                                    <div class="modal-dialog modal-confirm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <div class="icon-box">
+                                                                    <i class="material-icons">&#xE5CD;</i>
+                                                                </div>
+                                                                <h4 class="modal-title">Are you sure?</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+
+                                                                <form method="post" action="@Url.Action("Delete", "Products", new { id = item.Id }) ">
+                                                                    @Html.AntiForgeryToken()
+                                                                    <button type="submit" class="btn btn-danger"> Delete</button>
+                                                                </form>
+
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal for Reading more info on products -->
+                                                <div id="infoBackDrop" class="modal fade">
+                                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-confirm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+
+                                                                <h4 class="modal-title text-center">Product Information</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+
+                                                            <div class="modal-body">
+                                                                @foreach (var productInfo in item.Information)
+                                                                {
+                                                                    <h5 class="font-weight-bold text-decoration-underline">@productInfo.Title</h5>
+                                                                    <p>@productInfo.Description</p>
+                                                                    <br />
+                                                                }
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-google" data-dismiss="modal">Close</button>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            @*<input type="submit" value="Delete Products" />
+                        }*@
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+
+   <script src="/Content/js/data-table.js"></script>
+  
+}

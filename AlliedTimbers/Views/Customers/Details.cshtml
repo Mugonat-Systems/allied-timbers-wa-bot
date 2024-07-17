@@ -1,0 +1,55 @@
+﻿@using AlliedTimbers.Models
+@using PagedList
+@model Customer
+
+@{
+    ViewBag.Title = "Details";
+    var messages = ViewBag.Messages as IPagedList<Message>;
+}
+
+<div class="col-lg-10">
+    <div class="card mt-1 mb-3">
+        <div class="card-header">
+            <h6>Chat With @Model.Name (@Model.PhoneNumber)</h6>
+        </div>
+        @if (messages != null)
+        {
+            <div class="card-body">
+                <small>A total of @(messages.TotalItemCount)</small>
+                
+                <table class="table" aria-label="Customer Chats">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sender</th>
+                        <th>Message</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var chat in messages)
+                    {
+                        var userName = string.IsNullOrEmpty(Model.Name) ? Model.PhoneNumber : Model.Name;
+
+                        <tr>
+                            <td>@chat.SentTimeStamp</td>
+                            <td>@(chat.FromPhone == Model.PhoneNumber ? userName : chat.FromPhone)</td>
+                            <td>@chat.MessageText</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                @if (messages.HasPreviousPage)
+                {
+                    <a href="@Url.Action("Details", new { Model.Id, page = messages.PageNumber - 1 })" class="btn btn-outline-dark">Previous</a>
+                }
+                @if (messages.HasNextPage)
+                {
+                    <a href="@Url.Action("Details", new { Model.Id, page = messages.PageNumber + 1 })" class="btn btn-outline-dark">Next</a>
+                }
+            </div>
+        }
+
+    </div>
+</div>

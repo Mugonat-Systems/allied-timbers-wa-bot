@@ -1,0 +1,58 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "liveChat": {
+    "trigger": "(live chat)|(talk to agent)",
+    "type": "buttons",
+    "message": {
+      "title": "Talk to an agent",
+      "body": "Good day, welcome to live chat, you can talk to an agent to get your issues resolved, tap start to begin",
+      "buttons": [
+        "Start",
+        "Cancel"
+      ]
+    },
+    "response": {
+      "cancel": "menu",
+      "start": "startLiveChat"
+    },
+    "onReceive": "FxEnterLiveChat"
+  },
+
+  "startLiveChat": {
+    "type": "text",
+    "message": [
+      "Send your query/issue and wait while we connect you to an agent ☎️",
+      " - To exit live chat on your own, send *exit*"
+    ],
+    "response": {
+      "any": "concludeLiveChat"
+    }
+  },
+
+
+  "concludeLiveChat": {
+    "type": "list",
+    "onReceive": "FxRateLiveChat",
+    "onGenerate": "FxGetRating",
+    "trigger": "rate",
+    "message": {
+      "title": "Rate Live Chat",
+      "caption": "We would like to know if you found this chat helpful",
+      "button": "Rate Us",
+      "sections": []
+    },
+    "response": {
+      "any": "liveCompleted"
+    }
+  },
+
+  "liveCompleted": {
+    "type": "buttons",
+    "message": {
+      "title": "Thank your for supporting us.",
+      "body": "Your feedback is always welcome😊.",
+      "buttons": [ "Menu" ]
+    }
+
+  }
+}

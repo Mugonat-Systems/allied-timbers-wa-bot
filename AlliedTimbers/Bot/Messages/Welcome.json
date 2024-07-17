@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "menu": {
+    "type": "list",
+    "trigger": "hie?|hell?o|makadii?|maswerasei|menu",
+    "onGenerate": "FxGetMenu",
+    "onReceive": "FxOnRegister",
+    "message": {
+      "title": "Welcome to {app}",
+      "caption": "{timeOfDay} {user}, [greeting]",
+      "button": "View Menu",
+      "sections": [
+        
+      ]
+    },
+    "response": {
+      "any": "menu"
+    }
+  },
+  "register": {
+    "type": "text",
+    "message": "Hello there, before we start we would like to know your full name.",
+  }
+}

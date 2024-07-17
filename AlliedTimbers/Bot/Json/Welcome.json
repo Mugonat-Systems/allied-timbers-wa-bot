@@ -1,0 +1,54 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "menu": {
+    "type": "list",
+    "trigger": "hie?|hell?o|makadii?|maswerasei|menu|exit",
+    "onGenerate": "FxGetMenu",
+    "message": {
+      "title": "{greet} {app}",
+      "caption": "{timeOfDay} {user},  how can we help you today?",
+      "button": "View Menu",
+      "sections": [
+      ]
+    },
+    "response": {
+      "any": "menu"
+    }
+  },
+  "register": {
+    "type": "text",
+    "message": "Hello there, before we start we would like to know your name."
+  },
+
+  "categorizedProducts": {
+    "type": "list",
+    "trigger": "categories",
+    "onGenerate": "FxGetProdCategories",
+    "message": {
+      "title": "Products",
+      "caption": "View our product categories",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "categorizedProducts"
+    }
+  },
+
+  "categorizedContacts": {
+    "type": "list",
+    "trigger": "branchCategories",
+    "onGenerate": "FxGetContactDetails",
+    "message": {
+      "title": "Branches",
+      "caption": "Current locations, tap below to browse",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "categorizedContacts"
+    }
+  }
+
+
+}

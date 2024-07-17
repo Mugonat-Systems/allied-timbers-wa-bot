@@ -1,0 +1,43 @@
+﻿@using AlliedTimbers.Models
+@model ICollection<Customer>
+
+@{
+    ViewBag.Title = "Clients";
+}
+
+<div class="col-lg-10">
+    <div class="card mt-1 mb-3">
+        <div class="card-header">
+            <h6>Clients @ViewBag.State</h6>
+        </div>
+            <div class="card-body">
+                <table class="table" aria-label="Customer Chats">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sender</th>
+                        <th>Last Message</th>
+                        <th>Last Replied By</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var chat in Model)
+                    {
+                        var userName = string.IsNullOrEmpty(chat.Name) ? chat.PhoneNumber : chat.Name;
+
+                        <tr>
+                            <td>@chat.LastAvailableOn</td>
+                            <td>
+                                <a href="/customers/details/@chat.Id">
+                                    @userName (@chat.PhoneNumber)
+                                </a>
+                            </td>
+                            <td>@chat.LastMessage</td>
+                            <td>@chat.LastRepliedBy (@@ @chat.LastRepliedOn)</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>

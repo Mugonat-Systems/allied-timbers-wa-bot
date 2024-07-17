@@ -1,0 +1,40 @@
+﻿<div x-data="list" class="list-body list-group list-group-flush position-relative overflow-auto">
+    <template x-for="[group, groupChats] in chats">
+        <div class="list-group list-group-flush">
+            <div class="list-group-item header small font-weight-bold" x-text="group"></div>
+            <template x-for="chat in groupChats.map(toChatObject)">
+                <div class="list-group-item list-group-item-action hover-cursor" @@click="chatEvents.dispatch('open', chat)">
+                    <div class="row no-gutters">
+                        <div class="col-2">
+                            <div alt="" class="rounded-circle bg-dark mr-2" style="height: 40px; width: 40px"></div>
+                        </div>
+                        <div class="col-10">
+                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                <h6 class="mb-0 mr-auto" x-text="chat.phone"></h6>
+                                <div class="text-muted pl-2">
+                                    <small x-text="chat.actualTime"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="text-truncate mb-0">
+                                    <span x-show="chat.newMessagesCount > 0" x-text="chat.newMessagesCount" class="badge py-1 px-2 rounded-circle badge-success"></span>
+                                    <span x-text="chat.lastMessage"></span>
+                                </p>
+                                <small class="text-primary" x-text="'~' + chat.name"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <template x-if="status.is(rxStatus.loading)">
+        <div class="position-absolute w-100 text-center p-5">
+            <div class="d-inline-block rounded-circle p-2 shadow-sm">
+                <div class="spinner-border text-primary bg-white " role="status"></div>
+            </div>
+        </div>
+    </template>
+</div>
+
