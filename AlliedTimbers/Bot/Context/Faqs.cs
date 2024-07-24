@@ -36,7 +36,7 @@ public partial class AlliedTimbersBotContext
         {
             var display = new TextMessage
             {
-                Text = $"{faq.Question}\n" + $"\n{faq.Answer}"
+                Text = $"Question: {faq.Question}\n" + $"\nAnswer: {faq.Answer}"
             };
             
             json.Message = display;

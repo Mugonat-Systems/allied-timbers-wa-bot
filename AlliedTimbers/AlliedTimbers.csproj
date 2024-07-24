@@ -83,27 +83,39 @@
     <Compile Include="Bot\Channels\Dev.cs" />
     <Compile Include="Bot\Channels\Web.cs" />
     <Compile Include="Bot\Channels\Whatsapp.cs" />
+    <Compile Include="Bot\Context\Appointment.cs" />
     <Compile Include="Bot\Context\Branches.cs" />
+    <Compile Include="Bot\Context\Consultation.cs" />
+    <Compile Include="Bot\Context\Educational.cs" />
+    <Compile Include="Bot\Context\Events.cs" />
     <Compile Include="Bot\Context\Faqs.cs" />
     <Compile Include="Bot\Context\Feedback.cs" />
     <Compile Include="Bot\Context\LiveChat.cs" />
     <Compile Include="Bot\Context\AlliedTimbersBotContext.cs" />
+    <Compile Include="Bot\Context\News.cs" />
     <Compile Include="Bot\Context\Products.cs" />
     <Compile Include="Bot\Context\Promotions.cs" />
+    <Compile Include="Bot\Context\Recommendation.cs" />
     <Compile Include="Bot\Context\Welcome.cs" />
     <Compile Include="Bot\AlliedTimbersBot.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\API\MediaController.cs" />
     <Compile Include="Controllers\API\ResponsesController.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\AuditsController.cs" />
     <Compile Include="Controllers\CompanyBranchesController.cs" />
+    <Compile Include="Controllers\ConsultationsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EducationalController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\LoanApplicationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ProductFilesController.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -113,10 +125,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalUsings.cs" />
+    <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Audit.cs" />
+    <Compile Include="Models\Consultation.cs" />
+    <Compile Include="Models\Educational.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\LoanApplication.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -127,6 +144,8 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFile.cs" />
     <Compile Include="Models\ProductInfo.cs" />
@@ -144,6 +163,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Bot\Json\Appointment.json" />
+    <Content Include="Bot\Json\Consultation.json" />
+    <Content Include="Bot\Json\Educational.json" />
+    <Content Include="Bot\Json\Events.json" />
+    <Content Include="Bot\Json\News.json" />
+    <Content Include="Bot\Json\Recommendation.json" />
     <Content Include="Bot\Linguistics\strings.json" />
     <Content Include="Bot\Json\Branches.json" />
     <Content Include="Bot\Json\CustomerOnboard.json" />
@@ -1019,6 +1044,16 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dropdown_files.js" />
     <Content Include="Scripts\multiple_files.js" />
+    <Content Include="Views\Appointments\Create.cshtml" />
+    <Content Include="Views\Appointments\Delete.cshtml" />
+    <Content Include="Views\Appointments\Details.cshtml" />
+    <Content Include="Views\Appointments\Edit.cshtml" />
+    <Content Include="Views\Appointments\Index.cshtml" />
+    <Content Include="Views\Consultations\Create.cshtml" />
+    <Content Include="Views\Consultations\Delete.cshtml" />
+    <Content Include="Views\Consultations\Details.cshtml" />
+    <Content Include="Views\Consultations\Edit.cshtml" />
+    <Content Include="Views\Consultations\Index.cshtml" />
     <Content Include="Views\Customers\Chat\_ChatHistory.cshtml" />
     <Content Include="Views\Customers\Chat\_ChatInbox.cshtml" />
     <Content Include="Views\Customers\Chat\_ChatList.cshtml" />
@@ -1028,6 +1063,23 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\_Report.cshtml" />
+    <Content Include="Views\Educational\Create.cshtml" />
+    <Content Include="Views\Educational\Delete.cshtml" />
+    <Content Include="Views\Educational\Details.cshtml" />
+    <Content Include="Views\Educational\Edit.cshtml" />
+    <Content Include="Views\Educational\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Payments\Details.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1165,6 +1217,7 @@
     <PackageReference Include="PagedList.Mvc">
       <Version>4.5.0</Version>
     </PackageReference>
+    <PackageReference Include="Paynow" Version="1.2.0" />
     <PackageReference Include="Sigil" Version="4.7.0" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.20" />

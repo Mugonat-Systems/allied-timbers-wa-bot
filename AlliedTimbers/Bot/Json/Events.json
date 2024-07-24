@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "events": {
+    "type": "list",
+    "trigger": "viewEvents",
+    "onGenerate": "FxShowEvents",
+    "message": {
+      "title": "Our Upcoming Events",
+      "caption": "What we have, tap below to browse",
+      "button": "Browse",
+      "sections": []
+    },
+
+    "response": {
+      "any": "events"
+    }
+  },
+
+  "events/details": {
+    "type": "text",
+    "trigger": "event \\d+",
+    "onGenerate": "FxGetEvent",
+    "message": ""
+  }
+}

@@ -80,11 +80,12 @@ namespace AlliedTimbers.Controllers
                 {
                     Name = productViewModel.Name,
                     Description = productViewModel.Description,
-                    Requirements = productViewModel.Requirements,
-                    IsLoan = productViewModel.IsLoan,
-                    IsImageRequired = productViewModel.IsImageRequired,
-                    IsMukando = productViewModel.IsMukando,
-                    IsSolar = productViewModel.IsSolar,
+                    //Requirements = productViewModel.Requirements,
+                    Price = productViewModel.Price,
+                    //IsLoan = productViewModel.IsLoan,
+                    //IsImageRequired = productViewModel.IsImageRequired,
+                    //IsMukando = productViewModel.IsMukando,
+                    //IsSolar = productViewModel.IsSolar,
                     IsBoards = productViewModel.IsBoards,
                     IsPoles = productViewModel.IsPoles,
                     IsTrusses = productViewModel.IsTrusses,
@@ -172,12 +173,13 @@ namespace AlliedTimbers.Controllers
                 {
                     updateProduct.Name = product.Name;
                     updateProduct.Description = product.Description;
-                    updateProduct.Requirements = product.Requirements;
+                    // updateProduct.Requirements = product.Requirements;
+                    updateProduct.Price = product.Price;
                     updateProduct.Information = infos;
-                    updateProduct.IsLoan = product.IsLoan;
-                    updateProduct.IsImageRequired = product.IsImageRequired;
-                    updateProduct.IsMukando = product.IsMukando;
-                    updateProduct.IsSolar = product.IsSolar;
+                    //updateProduct.IsLoan = product.IsLoan;
+                    //updateProduct.IsImageRequired = product.IsImageRequired;
+                    //updateProduct.IsMukando = product.IsMukando;
+                    //updateProduct.IsSolar = product.IsSolar;
                     updateProduct.IsBoards = product.IsBoards;
                     updateProduct.IsPoles = product.IsPoles;
                     updateProduct.IsTrusses = product.IsTrusses;
@@ -272,12 +274,6 @@ namespace AlliedTimbers.Controllers
         //    await _db.SaveChangesAsync();
         //    return RedirectToAction("Index");
         //}
-
-
-
-
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing) _db.Dispose();

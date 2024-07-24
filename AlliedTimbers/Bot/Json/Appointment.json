@@ -1,0 +1,63 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "appointment": {
+    "type": "text",
+    "trigger": "appointmentBooking",
+    "onReceive": "FxSaveAppointmentName",
+    "message": "Enter your full name",
+    "response": {
+      "any": "appointmentEmail"
+    }
+  },
+  "appointmentEmail": {
+    "type": "text",
+    "message": "Enter your email address",
+    "onReceive": "FxSaveAppointmentEmail",
+    "response": {
+      "any": "appointmentPhone"
+    }
+  },
+  "appointmentPhone": {
+    "type": "text",
+    "message": "Enter your phone number",
+    "onReceive": "FxSaveAppointmentPhone",
+    "response": {
+      "any": "appointmentDay"
+    }
+  },
+  "appointmentDay": {
+    "type": "text",
+    "onReceive": "FxSaveAppointmentDay",
+    "message": "Enter preferred appointment date e.g 01/01/2020",
+    "response": {
+      "any": "appointmentPeriod"
+    }
+  },
+  
+  "appointmentPeriod": {
+    "type": "text",
+    "message": "Enter preferred appointment time e.g 10:00 AM",
+    "onReceive": "FxSaveAppointmentTime",
+    "response": {
+      "any": "appointmentServiceType"
+    }
+  },
+
+  "appointmentServiceType": {
+    "type": "text",
+    "message": "Enter specific service or reason for appointment e.g meeting, consultation",
+    "onReceive": "FxSaveServiceType",
+    "response": {
+      "any": "saveAppointment"
+    }
+  },
+  "saveAppointment": {
+    "type": "buttons",
+    "message": {
+      "body": "Thank you for the appointment. I will get back to you shortly.",
+      "buttons": [
+        "Menu"
+      ]
+    }
+  }
+}

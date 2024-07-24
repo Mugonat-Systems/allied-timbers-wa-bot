@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AlliedTimbers</title>
+    <title>Allied Timbers</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/Content/vendors/iconfonts/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="/Content/vendors/css/vendor.bundle.base.css">
@@ -27,6 +27,7 @@
             background-color: #04B76B;
             border-color: #04B76B;
         }
+        
     </style>
 
 </head>
@@ -60,7 +61,6 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <i class="fa fa-user menu-icon"></i>
@@ -91,33 +91,115 @@
             </div>
         </nav>
         <!-- partial -->
+        
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas">
                 <ul class="nav">
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Manager"))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Dashboard/">
-                                <i class="fa fa-home menu-icon"></i>
-                                <span class="menu-title font-weight-bold">Dashboard</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Dashboard/">
+                            <i class="fa fa-home menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-sliders-h menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Products Menu</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <a class="dropdown-item" href="/Products/">
+                                <i class="fas fa-file-archive menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold" >Products</span>
                             </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class=" nav-link font-weight-bold" href="/LoanApplications/">
-                                <i class="fas fa-address-card menu-icon"></i>
-                                <span class="menu-title font-weight-bold">Applications</span>
+                            <a class="dropdown-item" href="/ProductInfo/">
+                                <i class="fas fa-file-invoice menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold" >Product Information</span>
                             </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Customers/">
-                                <i class="fas fa-user-friends menu-icon"></i>
-                                <span class="menu-title font-weight-bold">Support Live Chat</span>
-
+                            <a class="dropdown-item" href="/Promotions/">
+                                <i class="fas fa-shopping-bag menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold" >Promotions</span>
                             </a>
-                        </li>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-grip-horizontal menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Support Menu</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <a class="dropdown-item" href="/FAQs/">
+                                <i class="fas fa-fill menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">FAQ's</span>
+                            </a>
+                            <a class="dropdown-item" href="/Feedbacks/">
+                                <i class="fas fa-feather menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">Feedback</span>
+                            </a>
+                            <a class=" dropdown-item" href="/Appointments/">
+                                <i class="fas fa-address-card menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">Visit Appointments</span>
+                            </a>
+                            <a class=" dropdown-item" href="/Consultations/">
+                                <i class="fas fa-file menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold"> Consultations </span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bars menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Content Menu</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <a class="dropdown-item" href="/Events/">
+                                <i class="fas fa-address-card menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">Events</span>
+                            </a>
+                            <a class="dropdown-item" href="/Educational/">
+                                <i class="fas fa-book-open menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">Educational Content</span>
+                            </a>
+                            <a class="dropdown-item" href="/News/">
+                                <i class="fas fa-newspaper menu-icon" style="color: #F4CA3E !important;"></i>
+                                <span class="menu-title font-weight-bold">News</span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="/Payments/">
+                            <i class="fas fa-address-card menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Payments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CompanyBranches/">
+                            <i class="fas fa-link menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Branches</span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Administrators/">
+                            <i class="fas fa-file-prescription menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Administration</span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Customers/">
+                            <i class="fas fa-user-friends menu-icon"></i>
+                            <span class="menu-title font-weight-bold">Support Live Chat</span>
+                        </a>
+                    </li>
                     }
 
                     else
@@ -128,41 +210,80 @@
                                 <span class="menu-title font-weight-bold">Dashboard</span>
                             </a>
                         </li>
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-sliders-h menu-icon"></i>
+                                <span class="menu-title font-weight-bold">Products Menu</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                                <a class="dropdown-item" href="/Products/">
+                                    <i class="fas fa-file-archive menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold" >Products</span>
+                                </a>
+                                <a class="dropdown-item" href="/ProductInfo/">
+                                    <i class="fas fa-file-invoice menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold" >Product Information</span>
+                                </a>
+                                <a class="dropdown-item" href="/Promotions/">
+                                    <i class="fas fa-shopping-bag menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold" >Promotions</span>
+                                </a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-grip-horizontal menu-icon"></i>
+                                <span class="menu-title font-weight-bold">Support Menu</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                                <a class="dropdown-item" href="/FAQs/">
+                                    <i class="fas fa-fill menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">FAQ's</span>
+                                </a>
+                                <a class="dropdown-item" href="/Feedbacks/">
+                                    <i class="fas fa-feather menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">Feedback</span>
+                                </a>
+                                <a class=" dropdown-item" href="/Appointments/">
+                                    <i class="fas fa-address-card menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">Visit Appointments</span>
+                                </a>
+                                <a class=" dropdown-item" href="/Consultations/">
+                                    <i class="fas fa-file menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold"> Consultations </span>
+                                </a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            
+                            <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars menu-icon"></i>
+                                <span class="menu-title font-weight-bold">Content Menu</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                                <a class="dropdown-item" href="/Events/">
+                                    <i class="fas fa-address-card menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">Events</span>
+                                </a>
+                                <a class="dropdown-item" href="/Educational/">
+                                    <i class="fas fa-book-open menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">Educational Content</span>
+                                </a>
+                                <a class="dropdown-item" href="/News/">
+                                    <i class="fas fa-newspaper menu-icon" style="color: #F4CA3E !important;"></i>
+                                    <span class="menu-title font-weight-bold">News</span>
+                                </a>
+                            </div>
+                        </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link " href="/Products/">
-                                <i class="fas fa-file-archive menu-icon "></i>
-                                <span class="menu-title font-weight-bold">Products</span>
+                            <a class="nav-link font-weight-bold" href="/Payments/">
+                                <i class="fas fa-address-card menu-icon"></i>
+                                <span class="menu-title font-weight-bold">Payments</span>
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class=" nav-link font-weight-bold" href="/ProductInfo/">
-                                <i class="fas fa-file-invoice menu-icon"></i>
-                                <span class="menu-title font-weight-bold">Product Information</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link font-weight-bold" href="/Promotions/">
-                            <i class="fas fa-shopping-bag menu-icon"></i>
-                            <span class="menu-title font-weight-bold">Promotions</span>
-                            </a>
-                        </li>
-
-                        @* <li class="nav-item"> *@
-                        @*     <a class=" nav-link font-weight-bold" href="/LoanApplications/"> *@
-                        @*         <i class="fas fa-address-card menu-icon"></i> *@
-                        @*         <span class="menu-title font-weight-bold">Applications</span> *@
-                        @*     </a> *@
-                        @* </li> *@
-
-                        @*<li class="nav-item">
-                <a class=" nav-link font-weight-bold" href="/ProductFiles/">
-                    <i class="fas fa-file menu-icon"></i>
-                    <span class="menu-title font-weight-bold"> Product Files</span>
-                </a>
-            </li>*@
-
                          <li class="nav-item"> 
                              <a class="nav-link" href="/CompanyBranches/"> 
                                  <i class="fas fa-link menu-icon"></i> 
@@ -178,31 +299,14 @@
 
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/FAQs/">
-                                <i class="fas fa-fill menu-icon"></i>
-                                <span class="menu-title font-weight-bold">FAQs</span>
-
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                <a class="nav-link" href="/Feedbacks/">
-                    <i class="fas fa-feather menu-icon"></i>
-                    <span class="menu-title font-weight-bold">Feedback</span>
-
-                </a>
-            </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/Customers/">
                                 <i class="fas fa-user-friends menu-icon"></i>
                                 <span class="menu-title font-weight-bold">Support Live Chat</span>
-
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/Audits/">
                                 <i class="fas fa-feather menu-icon"></i>
@@ -210,8 +314,7 @@
 
                             </a>
                         </li>
-
-
+                        
                     }
 
 
@@ -222,7 +325,6 @@
 
 
             @RenderBody()
-
         </div>
         <!-- page-body-wrapper ends -->
     </div>

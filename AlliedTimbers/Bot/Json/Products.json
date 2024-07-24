@@ -2,7 +2,7 @@
   "schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
   "products": {
     "type": "list",
-    "trigger": "loans|mukando|solar|funeral",
+    "trigger": "loans|mukando|solar|funeral|trusses|doors|timber|boards|poles|viewCategories",
     "onGenerate": "FxGetProducts",
     "message": {
       "title": "Products",
@@ -23,7 +23,7 @@
       "title": "{title}",
       "body": "{caption}",
       "buttons": [
-        "Apply",
+        "Purchase",
         "Information"
       ]
     },
@@ -41,6 +41,7 @@
 
   "applyForm": {
     "type": "list",
+    "trigger": "purchase|",
     "onGenerate": "FxNearestBranches",
     "onReceive": "FxSaveBranchId",
     "message": {
@@ -50,7 +51,95 @@
       "sections": []
     },
     "response": {
-      "any": "typeFullName"
+      "any": "quantity"
+    }
+  },
+  
+  "quantity": {
+    "type": "text",
+   
+    "onReceive": "FxSaveQuantity",
+    "message": "Enter quantity",
+    "response": {
+      "any": "purchase"
+    }
+  },
+  
+  "purchase": {
+    "type": "buttons",
+    "onReceive": "FxSavePaymentMethod",
+    "message": {
+      "body": ["Select payment method"],
+      "buttons": [
+        "Ecocash",
+        "Onemoney",
+        "Telecash"
+      ]
+    },
+    "response": {
+      "any": "paymentPhone"
+    }
+  },
+  
+  "paymentAmount": {
+    "type": "text",
+    "onReceive": "FxSaveAmount",
+    "message": "Enter the amount you require",
+    "response": {
+      "any": "paymentPhone"
+    }
+  },
+  "paymentPhone": {
+    "type": "buttons",
+    "message": {
+      "body": ["Enter your billing phone number"],
+      "buttons": [
+        "{FxGetCustomerPhone}",
+        "Enter phone"
+      ]
+    },
+    "response": {
+      "any": "FxIsPhoneNumberEntered"
+    }
+  },
+  "paymentPhoneInput": {
+    "type": "text",
+    "onReceive": "FxSavePhoneNumber",
+    "message": ["Enter your billing phone number eg _2637408447357_"],
+    "response": {
+      "any": "subscription/makePayment"
+    }
+  },
+
+  "subscription/makePayment": {
+    "type": "buttons",
+    "onGenerate": "FxMakePayment",
+    "message": {
+      "body": ["✅ Your payment was successful"],
+      "buttons": [
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "FxMakePayment"
+    }
+  },
+
+  "paymentStatus": {
+    "type": "text",
+    "onReceive": "FxGetPaymentMethod",
+    "message": "{PaymentStatus}",
+    "response": {
+      "any": "savePayment"
+    }
+  },
+
+  "savePayment": {
+    "type": "text",
+    "message": "",
+    "onReceive": "FxSavePayment",
+    "response": {
+      "any": "menu"
     }
   },
 

@@ -1,0 +1,111 @@
+﻿@model List<AlliedTimbers.Models.Educational>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Educational Content
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-warning" })
+
+                </ol>
+            </nav>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table">
+
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Content</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @product.Title
+                                    </td>
+                                    <td>
+                                        @product.Description
+                                    </td>
+                                    <td>
+                                        @product.Content
+                                    </td>
+                                    <td>
+                                        @product.Date.ToString("dd'/'MM'/'yyyy")
+                                    </td>
+                                    
+                                    <td>
+                                        <span style="display: inline-flex">
+                                            <button onclick="window.location.href =
+                                                 '@Url.Action("Edit", "Educational", new { id = product.Id })' "
+                                                    type="button" class="btn btn-outline-primary btn-sm mr-2">
+                                                Edit
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-sm" href="#myModal" data-toggle="modal">
+                                                Delete
+                                            </button>
+                                        </span>
+                                            <!-- Modal HTML -->
+                                            <div id="myModal" class="modal fade">
+                                                <div class="modal-dialog modal-confirm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <div class="icon-box">
+                                                                <i class="material-icons">&#xE5CD;</i>
+                                                            </div>
+                                                            <h4 class="modal-title">Are you sure?</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form method="post" action="@Url.Action("Delete", "Educational", new { id = product.Id }) ">
+                                                                @Html.AntiForgeryToken()
+                                                                <button type="submit" class="btn btn-danger"> Delete</button>
+                                                            </form>
+
+                                                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts{
+
+    <script src="/Content/js/data-table.js"></script>
+}

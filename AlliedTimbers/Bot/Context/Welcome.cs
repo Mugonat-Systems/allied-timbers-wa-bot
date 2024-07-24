@@ -26,10 +26,11 @@ public partial class AlliedTimbersBotContext
                     {
                         new("Product Categories", "Products in our catalog", "categories"),
                         new("Contact Us", "Visit our branches or contact them directly", "branchCategories"),
-                        new("Promotions", "View running promotions", "promotions"),
-                        new("Events", "View upcoming events", "events"),
-                        new("Educational Contents", "View educational content", "education"),
-                        new("News Updates", "View news and updates", "news"),
+                        new("Promotions", "View running promotions", "viewPromotions"),
+                        new("Products Recommendations", "Products we highly recommend you to purchase.", "productRecommendations"),
+                        new("Events Invitations", "View upcoming events, trade shows, and exhibitions", "viewEvents"),
+                        new("Educational Contents", "View educational content", "viewEducation"),
+                        new("News Updates", "View news and updates", "viewNews"),
                        
                        // new("Promotions", "View running promotions", "promotions")
                     }
@@ -42,8 +43,8 @@ public partial class AlliedTimbersBotContext
                         new("FAQs", "Frequently asked questions", "faqs"),
                         new("Let's Chat", "Talk to us directly", "live chat"),
                         new("Feedback", "Give us feedback on how you find our services", "rating"),
-                        new("Consultations", "Request a consultation", "consultation"),
-                        new("Appointment", "Book an appointment", "appointment")
+                        new("Consultations", "Request a consultation", "consultationBooking"),
+                        new("Visit Appointment", "Book an appointment", "appointmentBooking")
                     }
                 }
             };
@@ -66,11 +67,7 @@ public partial class AlliedTimbersBotContext
                     new("Timber Products", "Timber Products", "timber"),
                     new("Boards and Doors", "Boards and Doors", "boards"),
                     new("Treated Poles", "Treated Poles", "poles"),
-                    new("Doors", "Doors", "doors"),
-                    new("Loans", "Affordable Loans", "loans"),
-                    new("Mukando", "Save to purchase", "mukando"),
-                    new("Solar Systems","No more power cuts", "solar"),
-                    new("Funeral Plan", "Have a unique memorial", "funeral")
+                    new("Doors", "Doors", "doors")
                 }
             }
         };
@@ -99,14 +96,14 @@ public partial class AlliedTimbersBotContext
 
     private List<Product> ProductType()
     {
-        if (Thread.CurrentMessage == "loans")
-        {
-            Session.Set("category", Thread.CurrentMessage);
-            return Database.Products.Where(x => x.IsLoan &&
-            x.IsMukando == false && x.IsSolar == false)
-                .OrderBy(x => x.Name)
-                .ToList();
-        }
+        // if (Thread.CurrentMessage == "loans")
+        // {
+        //     Session.Set("category", Thread.CurrentMessage);
+        //     return Database.Products.Where(x => x.IsLoan &&
+        //     x.IsMukando == false && x.IsSolar == false)
+        //         .OrderBy(x => x.Name)
+        //         .ToList();
+        // }
 
         if (Thread.CurrentMessage == "trusses")
         {
@@ -148,46 +145,46 @@ public partial class AlliedTimbersBotContext
                 .ToList();
         }
         
-        if(Thread.CurrentMessage == "loans")
-        {
-            Session.Set("category", Thread.CurrentMessage);
-            return Database.Products.Where(x => x.IsLoan &&
-            x.IsMukando == false && x.IsSolar == false)
-                .OrderBy(x => x.Name)
-                .ToList();
-        }
+        // if(Thread.CurrentMessage == "loans")
+        // {
+        //     Session.Set("category", Thread.CurrentMessage);
+        //     return Database.Products.Where(x => x.IsLoan &&
+        //     x.IsMukando == false && x.IsSolar == false)
+        //         .OrderBy(x => x.Name)
+        //         .ToList();
+        // }
                
-       if(Thread.CurrentMessage == "mukando")
-        {
-            Session.Set("category", Thread.CurrentMessage);
-            return Database.Products.Where(s => s.IsMukando &&
-            s.IsLoan)
-                 .OrderBy(x => x.Name)
-                .ToList();
-        }
+       // if(Thread.CurrentMessage == "mukando")
+       //  {
+       //      Session.Set("category", Thread.CurrentMessage);
+       //      return Database.Products.Where(s => s.IsMukando &&
+       //      s.IsLoan)
+       //           .OrderBy(x => x.Name)
+       //          .ToList();
+       //  }
             
-       if(Thread.CurrentMessage == "solar")
-        {
-            Session.Set("category", Thread.CurrentMessage);
-            return Database.Products.Where(x => x.IsSolar &&
-            x.IsLoan)
-                .OrderBy(x => x.Name).ToList();
-        }
+       // if(Thread.CurrentMessage == "solar")
+       //  {
+       //      Session.Set("category", Thread.CurrentMessage);
+       //      return Database.Products.Where(x => x.IsSolar &&
+       //      x.IsLoan)
+       //          .OrderBy(x => x.Name).ToList();
+       //  }
            
         if (Thread.CurrentMessage == "next page" ||
          Thread.CurrentMessage == "previous page")
         {
             switch(Session.GetString("category"))
             {
-                case "loans":
-                    return Database.Products.Where(x => x.IsLoan && x.IsMukando == false && x.IsSolar == false)
-                        .OrderBy(x => x.Name).ToList();
-                case "mukando":
-                    return Database.Products.Where(s => s.IsMukando && s.IsLoan)
-                        .OrderBy(x => x.Name).ToList();
-                case "solar":
-                    return Database.Products.Where(x => x.IsSolar && x.IsLoan)
-                        .OrderBy(x => x.Name).ToList();
+                // case "loans":
+                //     return Database.Products.Where(x => x.IsLoan && x.IsMukando == false && x.IsSolar == false)
+                //         .OrderBy(x => x.Name).ToList();
+                // case "mukando":
+                //     return Database.Products.Where(s => s.IsMukando && s.IsLoan)
+                //         .OrderBy(x => x.Name).ToList();
+                // case "solar":
+                //     return Database.Products.Where(x => x.IsSolar && x.IsLoan)
+                //         .OrderBy(x => x.Name).ToList();
                 case "trusses":
                     return Database.Products.Where(x => x.IsTrusses)
                         .OrderBy(x => x.Name).ToList();
@@ -204,13 +201,13 @@ public partial class AlliedTimbersBotContext
                     return Database.Products.Where(x => x.IsDoors)
                         .OrderBy(x => x.Name).ToList();
                 default:
-                    return Database.Products.Where(d => d.IsLoan != true &&
-                        d.IsMukando != true && d.IsSolar != true).OrderBy(z => z.Name).ToList();
+                    return Database.Products.Where(d => d.IsTrusses != true &&
+                        d.IsTimber != true && d.IsBoards != true && d.IsPoles != true && d.IsDoors != true).OrderBy(z => z.Name).ToList();
             }
         }
         
-        return Database.Products.Where(d => d.IsLoan != true &&
-       d.IsMukando != true && d.IsSolar != true)
+        return Database.Products.Where(d => d.IsBoards != true &&
+       d.IsTrusses != true && d.IsTimber != true && d.IsPoles != true && d.IsDoors != true)
              .OrderBy(x => x.Name).ToList();
     }
 
@@ -232,4 +229,16 @@ public partial class AlliedTimbersBotContext
     //        Session.Set("collecting_name", false);
     //    }
     //}
+    public string GetStep(string alias)
+    {
+        if (Thread.AliasChatMessages.ContainsKey(alias))
+        {
+            return Thread.AliasChatMessages[alias].Step.ToString();
+        }
+        else
+        {
+            throw new KeyNotFoundException($"The alias ''{alias}'' was not found in the Thread.AliasChatMessages dictionary.");
+        }
+    
+    }
 }

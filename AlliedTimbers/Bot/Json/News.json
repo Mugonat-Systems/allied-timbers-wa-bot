@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "affairs": {
+    "type": "list",
+    "trigger": "viewNews",
+    "onGenerate": "FxShowNews",
+    "message": {
+      "title": "Our News",
+      "caption": "Our news, tap below to browse",
+      "button": "Browse",
+      "sections": []
+    },
+
+    "response": {
+      "any": "affairs"
+    }
+  },
+
+  "news/details": {
+    "type": "text",
+    "trigger": "news \\d+",
+    "onGenerate": "FxGetNews",
+    "message": ""
+  }
+}

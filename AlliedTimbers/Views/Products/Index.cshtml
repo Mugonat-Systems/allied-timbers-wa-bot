@@ -61,10 +61,15 @@
                                             @Html.DisplayNameFor(model => model.Description)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Requirements)
+                                            @Html.DisplayNameFor(model => model.Price)
                                         </th>
-                                        <th>@Html.DisplayNameFor(model => model.IsLoan)</th>
-                                        <th>@Html.DisplayNameFor(model => model.IsImageRequired)</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IsTrusses)
+                                        </th>
+                                        <th>@Html.DisplayNameFor(model => model.IsTimber)</th>
+                                        <th>@Html.DisplayNameFor(model => model.IsBoards)</th>
+                                        <th>@Html.DisplayNameFor(model => model.IsPoles)</th>
+                                        <th>@Html.DisplayNameFor(model => model.IsDoors)</th>
                                         <th></th>
                                         
                                     </tr>
@@ -84,21 +89,15 @@
                                                 @Html.DisplayFor(modelItem => item.Description)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Requirements)
+                                                @Html.DisplayFor(modelItem => item.Price)
                                             </td>
-                                            <td>
-
-
-                                                @*@foreach (var applicationForm in item.Files)
-                                {
-                                    @Html.DisplayFor(modelItem => applicationForm.Name)<br/>
-                                }*@
-                                                @Html.DisplayFor(modelItem => item.IsLoan)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.IsImageRequired)
-                                            </td>
-                                           
+                                            <th>
+                                                @Html.DisplayFor(modelItem => item.IsTrusses)
+                                            </th>
+                                            <th>@Html.DisplayFor(modelItem => item.IsTimber)</th>
+                                            <th>@Html.DisplayFor(modelItem => item.IsBoards)</th>
+                                            <th>@Html.DisplayFor(modelItem => item.IsPoles)</th>
+                                            <th>@Html.DisplayFor(modelItem => item.IsDoors)</th>
                                             <td>
                                                 <span style="display: inline-flex">
 
@@ -107,7 +106,7 @@
                                                     </button>
 
                                                     <button onclick="window.location.href =
-                         '@Url.Action("Edit", "Products", new { id = item.Id })' "
+                                                            '@Url.Action("Edit", "Products", new { id = item.Id })' "
                                                             type="button" class="btn btn-outline-primary btn-sm mr-2">
                                                         Edit
                                                     </button>

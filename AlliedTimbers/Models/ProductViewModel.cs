@@ -12,6 +12,8 @@ namespace AlliedTimbers.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Requirements { get; set; }
+        
+        public decimal Price { get; set; }
         //public IEnumerable<int> FileIds { get; set; }
         public IEnumerable<int> InfoIds { get; set; }
         public bool IsLoan { get; set; }

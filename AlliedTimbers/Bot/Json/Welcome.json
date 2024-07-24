@@ -22,7 +22,7 @@
 
   "categorizedProducts": {
     "type": "list",
-    "trigger": "categories",
+    "trigger": "categories|allProductsAvailable",
     "onGenerate": "FxGetProdCategories",
     "message": {
       "title": "Products",

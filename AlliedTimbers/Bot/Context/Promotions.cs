@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Mugonat.Chat.BotEngine;
@@ -14,7 +15,7 @@ public partial class AlliedTimbersBotContext
     public BotMessageConfig FxShowPromotions(BotMessageConfig json)
     {
         var list = (ListMenuMessage)json.Message;
-        var items = Database.Promotions.OrderByDescending(r => r.EndDate)
+        var items = Database.Promotions.Where(p => p.EndDate >= DateTime.Now && p.StartDate <= DateTime.Now).OrderByDescending(r => r.EndDate)
             .ToList();
 
         if (items.Count == 0)
@@ -56,65 +57,35 @@ public partial class AlliedTimbersBotContext
             return json;
         }
        
-            if (!Pagination.Paging(Thread.CurrentMessage, 8)) Pagination.MoveToPage(0);
+        if (!Pagination.Paging(Thread.CurrentMessage, 8)) Pagination.MoveToPage(0);
 
-            list.Items = new List<ChatMessageModels.ListSection>
+        list.Items = new List<ChatMessageModels.ListSection>
+        {
+            new()
             {
-                new()
-                {
-                    Title = "Promotions",
-                    Options = Pagination.GetPaged(items, 8)
-                        .Select(g => new ChatMessageModels.ListOption
-                        {
-                            Title = g.Name,
-                            PostbackText = $"promotion {g.Id}",
-                            Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
-                        }).ToList()
-                },
-                new()
-                {
-                    Title = "Navigation",
-                    Options = new List<ChatMessageModels.ListOption>
+                Title = "Promotions",
+                Options = Pagination.GetPaged(items, 8)
+                    .Select(g => new ChatMessageModels.ListOption
                     {
-                        new("Next page", "Show more items", "next page"),
-                        new("Previous page", "Show previous items", "previous page")
-                    }
+                        Title = g.Name,
+                        PostbackText = $"promotion {g.Id}",
+                        Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
+                    }).ToList()
+            },
+            new()
+            {
+                Title = "Navigation",
+                Options = new List<ChatMessageModels.ListOption>
+                {
+                    new("Next page", "Show more items", "next page"),
+                    new("Previous page", "Show previous items", "previous page")
                 }
-            };
+            }
+        };
         
 
         return json;
     }
-
-    //Fix Viewing of promotions
-    //public Dictionary<string, string> FxGetPromotion(BotThread thread)
-    //{
-    //    int.TryParse(Thread.CurrentMessage.Replace("promotion", ""),
-    //        out var id);
-    //    var promotion =  Database.Promotions.Find(id);
-    //    string title = "", caption = "";
-
-    //    if ( promotion == default)
-    //    {
-    //        title = "Currently we dont have any running promotions";
-    //        caption = "Please check again later";
-    //    }
-
-    //    else
-    //    {
-    //        title = $"{promotion.Name.ToEllipsis(25)}\n " +
-    //            $"{promotion.Description.ToEllipsis(30)}\n";
-    //        caption = $"{promotion.StartDate:M/d/yy}" + " - " +
-    //                        $"{promotion.EndDate:M/d/yy}";
-    //    }
-
-    //    return new Dictionary<string, string>
-    //        {
-    //            {"title", title },
-    //            {"caption", caption }
-    //        };
-
-    //}
 
     public BotMessageConfig FxGetPromotion( BotMessageConfig json)
     {
@@ -136,8 +107,8 @@ public partial class AlliedTimbersBotContext
         else
         {
             StringBuilder stringBuilder = new();
-            stringBuilder.Append(promotion.Name + "\n");
-            stringBuilder.Append(promotion.Description + "\n");
+            stringBuilder.Append(promotion.Name + "\n\n");
+            stringBuilder.Append(promotion.Description + "\n\n");
             stringBuilder.Append($"{promotion.StartDate:M/d/yy}" + " - " +
                                     $"{promotion.EndDate:M/d/yy}\n\n");
             stringBuilder.Append("Type hi to go back to the main menu");

@@ -13,6 +13,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<Product> Products { get; set; }
+    
+    public DbSet<Event> Events { get; set; }
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<News> News { get; set; }
+    
+    public DbSet<Educational> Educationals { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<ProductInfo> ProductInfos { get; set; }
     //public DbSet<ProductFile> ProductFiles { get; set; }
@@ -22,6 +28,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Faq> Faqs { get; set; }
     public DbSet<Promotion> Promotions { get; set; }
     public DbSet<Feedback> Feedbacks { get; set; }
+    
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Consultation> Consultations { get; set; }
     public DbSet<QuickResponse> QuickResponses { get; set; }
     public DbSet<LoanApplication> LoanApplications { get; set; }
     public DbSet<Audit> Audits { get; set; }

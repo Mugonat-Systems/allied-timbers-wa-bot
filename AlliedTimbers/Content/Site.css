@@ -49274,12 +49274,19 @@ input:focus {
     color: inherit;
 }
 
-    .sidebar .nav .nav-item .nav-link i.menu-icon {
+    .sidebar .nav .dropdown-item .nav-item .nav-link i.menu-icon {
         font-size: 0.9375rem;
         line-height: 1;
         margin-right: 1.5rem;
         color: #F4CA3E;
     }
+
+.sidebar .nav .nav-item .nav-link i.menu-icon {
+    font-size: 0.9375rem;
+    line-height: 1;
+    margin-right: 1.5rem;
+    color: #F4CA3E;
+}
 
 .rtl .sidebar .nav .nav-item .nav-link i.menu-icon {
     margin-left: 2rem;

@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "recommendations": {
+    "type": "list",
+    "trigger": "productRecommendations",
+    "onGenerate": "FxDisplayRecommendations",
+    "message": {
+      "title": "Products we highly recommend you",
+      "caption": "",
+      "button": "View Recommendations",
+      "sections": []
+    },
+    "response": {
+      "any": "recommendations"
+    }
+  },
+
+  "viewRecommendations": {
+    "type": "text",
+    "trigger": "recommendation \\d+",
+    "onGenerate": "FxShowRecommendations",
+    "message": ""
+  },
+
+  "RecommendationsSearch": {
+    "type": "text",
+    "trigger": "search",
+    "message": "Enter the question you would like to ask the Money Mart team",
+    "response": {
+      "any": "FxGotoRecommendationsAnswer"
+    }
+  },
+
+  "RecommendationsAnswer": {
+    "type": "list",
+    "onGenerate": "FxRecommendationsSearchResult",
+    "message": {
+      "title": "Search Complete",
+      "caption": "",
+      "button": "Menu",
+      "sections": []
+    }
+  }
+}
