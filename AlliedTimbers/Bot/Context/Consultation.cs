@@ -1,5 +1,6 @@
 ﻿using System;
 using AlliedTimbers.Models;
+using Mugonat.Chat.BotEngine.Attributes;
 using Mugonat.Chat.BotEngine.Models;
 
 namespace AlliedTimbers.Bot.Context;
@@ -48,6 +49,8 @@ public partial class AlliedTimbersBotContext
         Database.SaveChanges();
     }
     
+    
+    
     // public void FxSaveConsultationServiceType(BotMessageConfig config)
     // {
     //     var consultationService = new Consultation
@@ -64,4 +67,27 @@ public partial class AlliedTimbersBotContext
     //     Database.Consultations.Add(consultationService);
     //     Database.SaveChanges();
     // }
+    
+
+    [InvalidResponse("Please enter a valid date e.g dd/mm/yyyy ")]
+    public bool FxValidateDate(string date)
+    {
+        return IsValidDate(Thread.CurrentMessage);
+    }
+
+    private bool IsValidDate(string date) 
+    {
+        return System.Text.RegularExpressions.Regex.IsMatch(date , @"^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$");
+    }
+    
+    [InvalidResponse("Please enter a valid time e.g 10:00 ")]
+    public bool FxValidateTime(string time)
+    {
+        return IsValidTime(Thread.CurrentMessage);
+    }
+    
+    private bool IsValidTime(string time) 
+    {
+        return System.Text.RegularExpressions.Regex.IsMatch(time , @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+    }
 }

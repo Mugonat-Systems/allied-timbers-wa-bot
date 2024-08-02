@@ -12,6 +12,7 @@
   "appointmentEmail": {
     "type": "text",
     "message": "Enter your email address",
+    "validate": ["FxValidateEmail"],
     "onReceive": "FxSaveAppointmentEmail",
     "response": {
       "any": "appointmentPhone"
@@ -20,6 +21,7 @@
   "appointmentPhone": {
     "type": "text",
     "message": "Enter your phone number",
+    "validate": ["FxValidatePhoneNo"],
     "onReceive": "FxSaveAppointmentPhone",
     "response": {
       "any": "appointmentDay"
@@ -28,6 +30,7 @@
   "appointmentDay": {
     "type": "text",
     "onReceive": "FxSaveAppointmentDay",
+    "validate": ["FxValidateDate"],
     "message": "Enter preferred appointment date e.g 01/01/2020",
     "response": {
       "any": "appointmentPeriod"
@@ -36,7 +39,8 @@
   
   "appointmentPeriod": {
     "type": "text",
-    "message": "Enter preferred appointment time e.g 10:00 AM",
+    "message": "Enter preferred appointment time e.g 10:00",
+    "validate": ["FxValidateTime"],
     "onReceive": "FxSaveAppointmentTime",
     "response": {
       "any": "appointmentServiceType"

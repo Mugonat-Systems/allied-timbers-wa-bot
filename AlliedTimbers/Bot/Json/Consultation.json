@@ -13,6 +13,7 @@
   "consultationEmail": {
     "type": "text",
     "message": "Enter your email address",
+    "validate": [ "FxValidateEmail" ],
     "onReceive": "FxSaveConsultationEmail",
     "response": {
       "any": "consultationPhone"
@@ -22,6 +23,7 @@
   "consultationPhone": {
     "type": "text",
     "message": "Enter your phone number",
+    "validate": ["FxValidatePhoneNo"],
     "onReceive": "FxSaveConsultationPhone",
     "response": {
       "any": "consultationDay"
@@ -30,6 +32,7 @@
   "consultationDay": {
     "type": "text",
     "message": "Enter preferred consultation date e.g 01/01/2020",
+    "validate": ["FxValidateDate"],
     "onReceive": "FxSaveConsultationDay",
     "response": {
       "any": "ConsultationPeriodOfTime"
@@ -38,7 +41,8 @@
   
   "ConsultationPeriodOfTime": {
     "type": "text",
-    "message": "Enter preferred period of time e.g 10:00 AM",
+    "message": "Enter preferred period of time e.g 10:00",
+    "validate": ["FxValidateTime"],
     "onReceive": "FxSaveConsultationPeriodOfTime",
     "response": {
       "any": "ConsultationServiceTyped"

@@ -57,8 +57,8 @@
   
   "quantity": {
     "type": "text",
-   
     "onReceive": "FxSaveQuantity",
+    "validate": [ "FxValidateQuantity" ],
     "message": "Enter quantity",
     "response": {
       "any": "purchase"
@@ -105,6 +105,7 @@
   "paymentPhoneInput": {
     "type": "text",
     "onReceive": "FxSavePhoneNumber",
+    "validate": [ "FxValidatePhoneNo" ],
     "message": ["Enter your billing phone number eg _2637408447357_"],
     "response": {
       "any": "subscription/makePayment"
@@ -183,7 +184,7 @@
     }
   },
 
-  "amount": {
+  /*"amount": {
     "type": "text",
     "validate": [ "FxValidateAmount" ],
     "onReceive": "FxSaveAmount",
@@ -191,27 +192,27 @@
     "response": {
       "any": "FxFilterLoanType"
     }
-  },
+  },*/
 
-  "cashPlan": {
+  /*"cashPlan": {
     "type": "text",
     "onReceive": "FxSaveCashPan",
     "message": "Enter cash Plan you require e.g Adult or/and Children Payout",
     "response": {
       "any": "previewInput"
     }
-  },
+  },*/
 
-  "businessDescription": {
+  /*"businessDescription": {
     "type": "text",
     "onReceive": "FxSaveBusinessDescription",
     "message": "Enter a short description about your business / request",
     "response": {
       "any": "previewInput"
     }
-  },
+  },*/
 
-  "postImage": {
+  /*"postImage": {
     "type": "text",
     "meta": "Picture,PaySlip",
     "validate": [ "image" ],
@@ -220,9 +221,9 @@
     "response": {
       "any": "previewInput"
     }
-  },
+  },*/
 
-  "previewInput": {
+  /*"previewInput": {
     "type": "buttons",
     "template": "FxPreviewFormData",
     "onReceive": "FxSaveFormData",
@@ -235,7 +236,7 @@
       "confirm": "completeApplication",
       "cancel": "menu"
     }
-  },
+  },*/
 
   "completeApplication": {
     "type": "buttons",

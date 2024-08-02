@@ -1,0 +1,124 @@
+﻿{
+  "schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "quotations": {
+    "type": "list",
+    "trigger": "trussesQuotation|timberQuotation|boardsQuotation|polesQuotation|doorsQuotation",
+    "onReceive": "FxQuotationSaveProduct",
+    "onGenerate": "FxGetQuotations",
+    "message": {
+      "title": "Quotations",
+      "caption": "View products",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "addQuantity"
+    }
+  },
+  
+  "addQuotationProduct": {
+    "type": "text",
+    "onReceive": "FxQuotationSaveProduct",
+    "message": "Enter product",
+    "response": {
+      "any": "addQuantity"
+    }
+  },
+  
+  "addQuantity": {
+    "type": "text",
+    "onReceive": "FxQuotationSaveQuantity",
+    "validate": [ "FxValidateQuantity" ],
+    "message": "Enter quantity",
+    "response": {
+      "any": "viewQuotation"
+    }
+  },
+
+  "viewQuotation": {
+    "type": "buttons",
+    "template": "FxGetQuotation",
+    "message": {
+      "title": "{title}",
+      "body": "{caption}",
+      "buttons": [
+        "Make Payment",
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "viewQuotation"
+
+    }
+  },
+
+  "payQuotation": {
+    "type": "list",
+    "trigger": "Make Payment|",
+    "onGenerate": "FxQuotationNearestBranches",
+    "onReceive": "FxSaveQuotationBranchId",
+    "message": {
+      "title": "Our Branches",
+      "caption": "Select your nearest town",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "quotationPaymentMethod"
+    }
+  },
+  "quotationPaymentMethod": {
+    "type": "buttons",
+    "onReceive": "FxSaveQuotationMethod",
+    "message": {
+      "body": ["Select payment method"],
+      "buttons": [
+        "Ecocash",
+        "Onemoney",
+        "Telecash"
+      ]
+    },
+    "response": {
+      "any": "GetPhonePayment"
+    }
+  },
+
+  "GetPhonePayment": {
+    "type": "buttons",
+    "message": {
+      "body": ["Enter your billing phone number"],
+      "buttons": [
+        //"menu",
+        "{FxGetPaymentPhone}",
+        "Enter phone"
+      ]
+    },
+    "response": {
+      "any": "FxIsQuotationPhoneNumberEntered"
+    }
+  },
+  
+  "paymentQuotationPhoneInput": {
+  "type": "text",
+  "onReceive": "FxSaveQuotationPhoneNumber",
+  "validate": [ "FxValidatePhoneNo" ],
+  "message": ["Enter your billing phone number eg _2637408447357_"],
+  "response": {
+    "any": "quotation/makePayment"
+  }
+},
+  "quotation/makePayment": {
+    "type": "buttons",
+    "onGenerate": "FxMakeQuotationPayment",
+    "message": {
+      "body": ["✅ Your payment was successful"],
+      "buttons": [
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "FxMakePayment"
+    }
+  }
+}
+  

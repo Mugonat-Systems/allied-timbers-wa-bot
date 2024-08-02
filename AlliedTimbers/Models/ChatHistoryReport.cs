@@ -31,7 +31,7 @@ public class ChatHistoryReport : Timestamp
                 .ToString(),
             // ["Total missed clients"] = customers.Count(a => dateBefore(a.LastRepliedOn) && a.IsClosed != true)
             //     .ToString(),
-            ["Total applications"] = db.LoanApplications.Count().ToString(),
+           // ["Total applications"] = db.LoanApplications.Count().ToString(),
             ["Total blocked"] = customers.Count(y => y.ChancesLeft < 0).ToString()
         };
 

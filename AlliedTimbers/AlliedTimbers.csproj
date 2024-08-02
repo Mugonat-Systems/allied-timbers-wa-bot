@@ -90,11 +90,15 @@
     <Compile Include="Bot\Context\Events.cs" />
     <Compile Include="Bot\Context\Faqs.cs" />
     <Compile Include="Bot\Context\Feedback.cs" />
+    <Compile Include="Bot\Context\FeedbackConsultations.cs" />
     <Compile Include="Bot\Context\LiveChat.cs" />
     <Compile Include="Bot\Context\AlliedTimbersBotContext.cs" />
     <Compile Include="Bot\Context\News.cs" />
+    <Compile Include="Bot\Context\NewsEvents.cs" />
     <Compile Include="Bot\Context\Products.cs" />
+    <Compile Include="Bot\Context\ProductsInfo.cs" />
     <Compile Include="Bot\Context\Promotions.cs" />
+    <Compile Include="Bot\Context\Quotation.cs" />
     <Compile Include="Bot\Context\Recommendation.cs" />
     <Compile Include="Bot\Context\Welcome.cs" />
     <Compile Include="Bot\AlliedTimbersBot.cs" />
@@ -112,7 +116,6 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\FeedbacksController.cs" />
-    <Compile Include="Controllers\LoanApplicationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
@@ -134,7 +137,6 @@
     <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Educational.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\LoanApplication.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ChatHistoryReport.cs" />
@@ -167,7 +169,11 @@
     <Content Include="Bot\Json\Consultation.json" />
     <Content Include="Bot\Json\Educational.json" />
     <Content Include="Bot\Json\Events.json" />
+    <Content Include="Bot\Json\FeedbackConsultations.json" />
     <Content Include="Bot\Json\News.json" />
+    <Content Include="Bot\Json\NewsEvents.json" />
+    <Content Include="Bot\Json\ProductsInfo.json" />
+    <Content Include="Bot\Json\Quotation.json" />
     <Content Include="Bot\Json\Recommendation.json" />
     <Content Include="Bot\Linguistics\strings.json" />
     <Content Include="Bot\Json\Branches.json" />
@@ -1146,11 +1152,6 @@
     <Content Include="Views\Feedbacks\Details.cshtml" />
     <Content Include="Views\Feedbacks\Edit.cshtml" />
     <Content Include="Views\Feedbacks\Index.cshtml" />
-    <Content Include="Views\LoanApplications\Create.cshtml" />
-    <Content Include="Views\LoanApplications\Delete.cshtml" />
-    <Content Include="Views\LoanApplications\Details.cshtml" />
-    <Content Include="Views\LoanApplications\Edit.cshtml" />
-    <Content Include="Views\LoanApplications\Index.cshtml" />
     <Content Include="Views\Audits\Index.cshtml" />
     <Content Include="Views\Administrators\Index.cshtml" />
     <Content Include="Views\Administrators\Create.cshtml" />

@@ -126,7 +126,6 @@ public partial class AlliedTimbersBotContext
                 {"title", title },
                 {"caption", caption }
             };
-
     }
 
     public BotMessageConfig FxGetProductInfo(BotMessageConfig json)
@@ -165,7 +164,7 @@ public partial class AlliedTimbersBotContext
         return json;
     }
 
-    public void FxSaveName(BotMessageConfig json)
+    /*public void FxSaveName(BotMessageConfig json)
     {
         int.TryParse(Thread.CurrentMessage.Replace("product ", ""),
            out var id);
@@ -178,12 +177,12 @@ public partial class AlliedTimbersBotContext
             // Session.Set("IsImageRequired", product.IsImageRequired);
             
         }
-    }
+    }*/
 
-    public void FxSaveIdNo(BotMessageConfig json)
+    /*public void FxSaveIdNo(BotMessageConfig json)
     {
         Session.Set("IdNo", Thread.CurrentMessage);
-    }
+    }*/
     
     // for loans
     // public void FxSaveAmount(BotMessageConfig json)
@@ -191,7 +190,7 @@ public partial class AlliedTimbersBotContext
     //     Session.Set("amount", Thread.CurrentMessage);
     // }
 
-    public void FxSaveQuantity(BotMessageConfig json)
+    public void FxSaveQuantity1(BotMessageConfig json)
     {
         Session.Set("quantity", Thread.CurrentMessage);
         var amount = Session.GetInteger("quantity") * Session.GetDecimal("productPriceAmount");
@@ -199,17 +198,24 @@ public partial class AlliedTimbersBotContext
 
     }
 
+    public void FxSaveQuantity(BotMessageConfig json)
+    {
+        Session.Set("quantity", Thread.CurrentMessage);
+        var amount = Session.GetInteger("quantity") * Session.GetDecimal("productPriceAmount");
+        Session.Set("quantityAmount", amount);
+    }
+
     public void FxSavePhoneNumber(BotMessageConfig json)
     {
         Session.Set("phoneNumber", Thread.CurrentMessage);
     }
 
-    public void FxSaveBusinessDescription(BotMessageConfig json)
+    /*public void FxSaveBusinessDescription(BotMessageConfig json)
     {
         Session.Set("descripton", Thread.CurrentMessage);
-    }
+    }*/
 
-    public Dictionary<string, string> FxPreviewFormData(BotThread thread)
+    /*public Dictionary<string, string> FxPreviewFormData(BotThread thread)
     {
         var fullName = Session.GetString("fullName");
         var phoneNumber = Session.GetString("phoneNumber");
@@ -246,9 +252,9 @@ public partial class AlliedTimbersBotContext
         {
             {"caption",$"{content}\nCashPlan: {Session.GetString("cashPlan")}"  }
         };
-    }
+    }*/
 
-    public BotMessageConfig FxSaveFormData(BotMessageConfig config)
+    /*public BotMessageConfig FxSaveFormData(BotMessageConfig config)
     {
         var product = Database.Products.Find(Session.GetInteger("ProductId"));
 
@@ -290,9 +296,9 @@ public partial class AlliedTimbersBotContext
         Database.LoanApplications.Add(loanApplication);
         Database.SaveChanges();
         return config;
-    }
+    }*/
 
-    public void FxVerificationPic(BotMessageConfig json)
+    /*public void FxVerificationPic(BotMessageConfig json)
     {
         if(!json.MetaData?.Contains("Picture") ?? false)
         {
@@ -307,9 +313,9 @@ public partial class AlliedTimbersBotContext
         //var fileUrl = FilesHandler.Download(Thread.CurrentMessage);
 
         //Session.Set("pictureUrl", fileUrl);
-    }
+    }*/
 
-    public void FxSelfiePic(BotMessageConfig json)
+    /*public void FxSelfiePic(BotMessageConfig json)
     {
         if (!json.MetaData?.Contains("Picture") ?? false)
         {
@@ -321,7 +327,7 @@ public partial class AlliedTimbersBotContext
         var downloadUrl2 = Thread.CurrentMessage;
        
         Session.Set(downloadKey2, downloadUrl2);
-    }
+    }*/
 
     // public void FxSaveCashPan(BotMessageConfig json)
     // {
@@ -385,24 +391,30 @@ public partial class AlliedTimbersBotContext
             return Thread.AliasChatMessages["documents"].Step.ToString();
         }
 
+        if (thread.CurrentMessage == "Quotation")
+        {
+            return Thread.AliasChatMessages["Quotation"].Step.ToString();
+        }
+
         if (thread.CurrentMessage == "Apply")
             return Thread.AliasChatMessages["applyForm"].Step.ToString();
         if (thread.CurrentMessage == "Purchase")
             return Thread.AliasChatMessages["purchase"].Step.ToString();
 
-        if (thread.CurrentMessage == "Files")
-            return Thread.AliasChatMessages["files"].Step.ToString();
+        /*if (thread.CurrentMessage == "Files")
+            return Thread.AliasChatMessages["files"].Step.ToString();*/
 
-         if (Session.GetBool("IsLoan"))
-             return Thread.AliasChatMessages["amount"].Step.ToString();
+         /*if (Session.GetBool("IsLoan"))
+             return Thread.AliasChatMessages["amount"].Step.ToString();*/
 
-         if (!Session.GetBool("IsLoan"))
+         /*if (!Session.GetBool("IsLoan"))
              return Thread.AliasChatMessages["cashPlan"].Step.ToString();
+             */
 
         return Thread.AliasChatMessages["menu"].Step.ToString();
     }
 
-    public string FxFilterLoanType(BotThread thread)
+    /*public string FxFilterLoanType(BotThread thread)
     {
         if(Session.GetBool("IsImageRequired"))
             return Thread.AliasChatMessages["postImage"].Step.ToString();
@@ -411,7 +423,7 @@ public partial class AlliedTimbersBotContext
             return Thread.AliasChatMessages["businessDescription"].Step.ToString();
         
         return Thread.AliasChatMessages["menu"].Step.ToString(); ;
-    }
+    }*/
 
     [InvalidResponse("Please enter a valid ID number")]
     public bool FxValidateId(string id)
@@ -444,6 +456,27 @@ public partial class AlliedTimbersBotContext
     private bool IsValidAmount(string amount)
     {
         return System.Text.RegularExpressions.Regex.IsMatch(amount, @"^\d+$");
+    }
+    [InvalidResponse("Please enter a valid quantity e.g 2")]
+    public bool FxValidateQuantity(string quantity)
+    {
+        return IsValidQuantity(Thread.CurrentMessage);
+    }
+
+
+    private bool IsValidQuantity(string quantity)
+    {
+        return System.Text.RegularExpressions.Regex.IsMatch(quantity, @"^\d+$");
+    }
+    [InvalidResponse("Please enter a valid email e.g example@gmail.com")]
+    public bool FxValidateEmail(string email)
+    {
+        return IsValidEmail(Thread.CurrentMessage);
+    }
+    
+    private bool IsValidEmail(string email)
+    {
+        return System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^\s@]+@[^\s@]+\.[^\s@]+$");
     }
 
     public BotMessageConfig FxNearestBranches(BotMessageConfig json)
@@ -545,16 +578,16 @@ public partial class AlliedTimbersBotContext
         Session.Set("PaymentMethod", Thread.CurrentMessage);
     }
 
-    // public void FxSaveAmount(BotMessageConfig config)
-    // {
-    //     var currentMessage = Thread.CurrentMessage;
-    //     decimal amount = 0;
-    //     if (decimal.TryParse(currentMessage, NumberStyles.AllowThousands | NumberStyles.AllowDecimalPoint,
-    //             CultureInfo.InvariantCulture, out amount))
-    //     {
-    //         Session.Set("Amount", amount);
-    //     }
-    // }
+     public void FxSaveAmount(BotMessageConfig config)
+     {
+         var currentMessage = Thread.CurrentMessage;
+         decimal amount = 0;
+         if (decimal.TryParse(currentMessage, NumberStyles.AllowThousands | NumberStyles.AllowDecimalPoint,
+                 CultureInfo.InvariantCulture, out amount))
+         {
+             Session.Set("Amount", amount);
+         }
+     }
 
     public void FxGetAmount(int productId)
     {
@@ -634,7 +667,7 @@ private static bool PollPaymentStatus(Paynow paynow, string pollUrl)
     var loop = true;
     var isPaid = false;
     var count = 0;
-    while (loop && count < 60)
+    while (loop && count < 50)
     {
         var paymentStatus = paynow.PollTransaction(
             pollUrl);

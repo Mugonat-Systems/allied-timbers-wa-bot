@@ -38,7 +38,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.RoleName)
                                     </th>
-                                    <th></th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
 
@@ -66,13 +66,15 @@
                                                     Edit
                                                 </button>
 
-                                                <button type="button" class="btn btn-warning btn-sm" href="#myModal" data-toggle="modal">
+                                                
+                                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal-@item.Id">
                                                     Delete
                                                 </button>
                                             </span>
 
                                             <!-- Modal for Delete -->
-                                            <div id="myModal" class="modal fade">
+                                            
+                                                <div id="myModal-@item.Id" class="modal fade" tabindex="-1" role="dialog">
                                                 <div class="modal-dialog modal-confirm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

@@ -61,12 +61,12 @@
                                                 Edit
                                             </button>
 
-                                            <button type="button" class="btn btn-warning btn-sm" href="#myModal" data-toggle="modal">
-                                                Delete
-                                            </button>
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal-@product.Id">
+                                                    Delete
+                                                </button>
                                         </span>
                                             <!-- Modal HTML -->
-                                            <div id="myModal" class="modal fade">
+                                        <div id="myModal-@product.Id" class="modal fade" tabindex="-1" role="dialog">
                                                 <div class="modal-dialog modal-confirm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

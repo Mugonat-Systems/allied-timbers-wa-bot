@@ -55,12 +55,12 @@ public partial class AlliedTimbersBotContext : BotExecutionContext, IDisposable
         if (Customer.IsRegistered < 2)
         {
             Customer.IsRegistered = 2;
-            Session.Set("registered", "Welcome to");
+            Session.Set("registered", "l'm, Timber Welcome to");
             Database.SaveChanges();
         }
         else
         {
-            Session.Set("registered", "Welcome back to");
+            Session.Set("registered", "l'm, Timber Welcome back to");
         }
 
         return (Dictionary<string, string>)base.GlobalTemplate().MergeDictionary(new Dictionary<string, string>

@@ -22,7 +22,7 @@
 
   "categorizedProducts": {
     "type": "list",
-    "trigger": "categories|allProductsAvailable",
+    "trigger": "categories|allProductsAvailable|",
     "onGenerate": "FxGetProdCategories",
     "message": {
       "title": "Products",
@@ -32,6 +32,21 @@
     },
     "response": {
       "any": "categorizedProducts"
+    }
+  },
+  
+  "categorizedQuotations": {
+    "type": "list",
+    "trigger": "quotationInfo",
+    "onGenerate": "FxGetQuotationInfo",
+    "message": {
+      "title": "Quotation",
+      "caption": "View our products",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "categorizedQuotations"
     }
   },
 
@@ -49,6 +64,4 @@
       "any": "categorizedContacts"
     }
   }
-
-
 }

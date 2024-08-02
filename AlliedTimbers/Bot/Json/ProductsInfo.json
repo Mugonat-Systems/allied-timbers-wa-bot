@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "productsInfo": {
+    "type": "list",
+    "trigger": "productsInfo",
+    "onGenerate": "FxGetProductsInfo",
+    "message": {
+      "title": "Products,Promotions and Recommendations",
+      "caption": "View Products,Promotions and Recommendations",
+      "button": "View",
+      "sections": [
+      ]
+    },
+    "response": {
+      "any": "productsInfo"
+    }
+  }
+}
