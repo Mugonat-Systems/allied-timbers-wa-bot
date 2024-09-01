@@ -53,10 +53,10 @@ public partial class AlliedTimbersBotContext
                     Title = "Products",
                     Options = items.Select(p => new ChatMessageModels.ListOption
                     {
-                        
+
                         Title = p.Name.ToEllipsis(20),
                         PostbackText = $"product {p.Id}",
-                        Description = (p.Description.ToEllipsis(20),$"${p.Price}").ToString()
+                        Description = p.Description.ToEllipsis(20) + $" ${p.Price}"
                     }).ToList()
                 }
             };
@@ -104,7 +104,8 @@ public partial class AlliedTimbersBotContext
 
         if (product == default)
         {
-            title = "The product you have specified may have been deleted";
+            var newTitle = "The product you have specified may have been deleted";
+            title = newTitle.ToEllipsis(20);
             caption = "Please check again later";
 
         }
@@ -112,7 +113,8 @@ public partial class AlliedTimbersBotContext
         {
             Session.Set("ProductId", product.Id);
 
-            title = $"{product.Name}\n";
+            title = $"{product.Name.ToEllipsis(20)}\n";
+            caption = $"{product.Description}";
             
             Session.Set("ProductName", product.Name);
             // caption = $"{product.Description} \n\n {product.Requirements}";
@@ -164,32 +166,6 @@ public partial class AlliedTimbersBotContext
         return json;
     }
 
-    /*public void FxSaveName(BotMessageConfig json)
-    {
-        int.TryParse(Thread.CurrentMessage.Replace("product ", ""),
-           out var id);
-    
-        Session.Set("fullName", Thread.CurrentMessage);
-        var product = Database.Products.Find(Session.GetInteger("ProductId"));
-        if(product != null)
-        {
-            // Session.Set("IsLoan", product.IsLoan);
-            // Session.Set("IsImageRequired", product.IsImageRequired);
-            
-        }
-    }*/
-
-    /*public void FxSaveIdNo(BotMessageConfig json)
-    {
-        Session.Set("IdNo", Thread.CurrentMessage);
-    }*/
-    
-    // for loans
-    // public void FxSaveAmount(BotMessageConfig json)
-    // {
-    //     Session.Set("amount", Thread.CurrentMessage);
-    // }
-
     public void FxSaveQuantity1(BotMessageConfig json)
     {
         Session.Set("quantity", Thread.CurrentMessage);
@@ -210,130 +186,6 @@ public partial class AlliedTimbersBotContext
         Session.Set("phoneNumber", Thread.CurrentMessage);
     }
 
-    /*public void FxSaveBusinessDescription(BotMessageConfig json)
-    {
-        Session.Set("descripton", Thread.CurrentMessage);
-    }*/
-
-    /*public Dictionary<string, string> FxPreviewFormData(BotThread thread)
-    {
-        var fullName = Session.GetString("fullName");
-        var phoneNumber = Session.GetString("phoneNumber");
-        var IdNo = Session.GetString("IdNo");
-
-        var branchName = Database.CompanyBranches.Find(Session.GetInteger("branchId"));
-
-        Session.Set("branchName", branchName.Name);
-
-        var  content = $"Name: {fullName}\n" +
-            $"Phone Number: {phoneNumber}\n" +
-            $"ID No: {IdNo}" +
-            $"Nearest Town: {branchName.Name}";
-
-        // if (Session.GetBool("IsLoan") && Session.GetBool("IsImageRequired"))
-        // { 
-        //     return new Dictionary<string, string>
-        //     {
-        //         {"caption", $"{content}\nAmount: {Session.GetDecimal("amount")}"}
-        //     };
-        // }
-
-        // if(Session.GetBool("IsLoan"))
-        // {
-        //     string caption = $"Amount: {Session.GetDecimal("amount")}\n" +
-        //         $"Description: {Session.GetString("descripton")}";
-        //     return new Dictionary<string, string>
-        //     {
-        //         {"caption", $"{content}\n{caption}"}
-        //     };
-        // }
-
-        return new Dictionary<string, string>
-        {
-            {"caption",$"{content}\nCashPlan: {Session.GetString("cashPlan")}"  }
-        };
-    }*/
-
-    /*public BotMessageConfig FxSaveFormData(BotMessageConfig config)
-    {
-        var product = Database.Products.Find(Session.GetInteger("ProductId"));
-
-        LoanApplication loanApplication = new();
-        loanApplication.CustomerName = Session.GetString("fullName");;
-        loanApplication.PhoneNo = Session.GetString("phoneNumber");;
-        loanApplication.DateApplied = DateTime.Now;
-        loanApplication.IdNo = Session.GetString("IdNo");
-        loanApplication.SelfiePath = Session.GetString("Selfie");
-        loanApplication.BranchName = Session.GetString("branchName");
-
-        loanApplication.ProductName = product.Name;
-        
-        loanApplication.LoanApproval = LoanApproval.Pending;
-
-        // if (Session.GetBool("IsLoan") && Session.GetBool("IsImageRequired"))
-        // {
-        //     loanApplication.Amount = Session.GetDecimal("amount");
-        //     loanApplication.FilePath = Session.GetString("PaySlip");
-        //     //loanApplication.SalaryType = Session.GetString("SalaryType");
-        //
-        //     Database.LoanApplications.Add(loanApplication);
-        //     Database.SaveChanges();
-        //     return config;
-        // }
-
-        // if (Session.GetBool("IsLoan"))
-        // {
-        //     loanApplication.Amount = Session.GetDecimal("amount");
-        //     loanApplication.Description = Session.GetString("descripton");
-        //
-        //     Database.LoanApplications.Add(loanApplication);
-        //     Database.SaveChanges();
-        //     return config;
-        // }
-
-        loanApplication.CashPlan = Session.GetString("cashPlan");
-
-        Database.LoanApplications.Add(loanApplication);
-        Database.SaveChanges();
-        return config;
-    }*/
-
-    /*public void FxVerificationPic(BotMessageConfig json)
-    {
-        if(!json.MetaData?.Contains("Picture") ?? false)
-        {
-            Session.Set(json.MetaData, Thread.CurrentMessage);
-            return;
-        }
-
-        var downloadKey = json.MetaData?.Split(',').Last();
-        var downloadUrl = Thread.CurrentMessage;
-
-        Session.Set(downloadKey, downloadUrl);
-        //var fileUrl = FilesHandler.Download(Thread.CurrentMessage);
-
-        //Session.Set("pictureUrl", fileUrl);
-    }*/
-
-    /*public void FxSelfiePic(BotMessageConfig json)
-    {
-        if (!json.MetaData?.Contains("Picture") ?? false)
-        {
-            Session.Set(json.MetaData, Thread.CurrentMessage);
-            return;
-        }
-
-        var downloadKey2 = json.MetaData?.Split(',').Last();
-        var downloadUrl2 = Thread.CurrentMessage;
-       
-        Session.Set(downloadKey2, downloadUrl2);
-    }*/
-
-    // public void FxSaveCashPan(BotMessageConfig json)
-    // {
-    //     Session.Set("cashPlan", Thread.CurrentMessage);
-    // }
-
     public void FxSaveBranchId(BotMessageConfig json)
     {
         int.TryParse(Thread.CurrentMessage.Replace("nearBranch ", ""),
@@ -343,41 +195,6 @@ public partial class AlliedTimbersBotContext
         Session.Set("branchName", branch.Name);
     }
 
-    //public Dictionary<string, string> FxSendFile(BotThread thread)
-    //{
-    //    int.TryParse(Session.GetInteger("ProductId").ToString(), out var id);
-    //    var productInfos = Database.ProductInfos.Where(c => c.Product.Id == id).ToList();
-
-
-    //    if (productInfos.Count == 0)
-    //    {
-    //        return new Dictionary<string, string>
-    //        {
-    //            {"title",  "Not found" },
-    //            {"caption",  "This product has no files associated with it "}
-    //        };
-    //    }
-
-    //        StringBuilder stringBuilder = new();
-
-    //        foreach (var productInfo in productInfos)
-    //        {
-    //            if (productInfo.FilePath != default)
-    //            {
-    //                foreach (var productFile in productInfos)
-    //                {
-    //                    SendDocumentMessage(productFile);
-    //                }
-    //            }
-
-    //        }
-
-    //    return new Dictionary<string, string>
-    //        {
-    //            {"title", "" },
-    //            {"caption", "" }
-    //        };
-    //}
 
     public string FxGotoOption(BotThread thread)
     {
@@ -401,29 +218,11 @@ public partial class AlliedTimbersBotContext
         if (thread.CurrentMessage == "Purchase")
             return Thread.AliasChatMessages["purchase"].Step.ToString();
 
-        /*if (thread.CurrentMessage == "Files")
-            return Thread.AliasChatMessages["files"].Step.ToString();*/
-
-         /*if (Session.GetBool("IsLoan"))
-             return Thread.AliasChatMessages["amount"].Step.ToString();*/
-
-         /*if (!Session.GetBool("IsLoan"))
-             return Thread.AliasChatMessages["cashPlan"].Step.ToString();
-             */
 
         return Thread.AliasChatMessages["menu"].Step.ToString();
     }
 
-    /*public string FxFilterLoanType(BotThread thread)
-    {
-        if(Session.GetBool("IsImageRequired"))
-            return Thread.AliasChatMessages["postImage"].Step.ToString();
-      
-        if(!Session.GetBool("IsImageRequired"))
-            return Thread.AliasChatMessages["businessDescription"].Step.ToString();
-        
-        return Thread.AliasChatMessages["menu"].Step.ToString(); ;
-    }*/
+    
 
     [InvalidResponse("Please enter a valid ID number")]
     public bool FxValidateId(string id)
@@ -510,7 +309,7 @@ public partial class AlliedTimbersBotContext
                     Title = "Branches",
                     Options = items.Select(f => new ChatMessageModels.ListOption
                     {
-                        Title = f.Name,
+                        Title = f.Name.ToEllipsis(20),
                         PostbackText = $"nearBranch {f.Id}",
                         Description = f.PhoneNumber
 
@@ -533,7 +332,7 @@ public partial class AlliedTimbersBotContext
                         {
                             Title = f.Name.ToEllipsis(20),
                             PostbackText = $"nearBranch {f.Id}",
-                            Description = f.PhoneNumber.ToEllipsis(20)
+                            Description = f.PhoneNumber
                         }).ToList()
                 },
 
@@ -557,21 +356,6 @@ public partial class AlliedTimbersBotContext
         return json;
     }
 
-    //private void SendDocumentMessage(ProductInfo productFile)
-    //{
-    //    if (string.IsNullOrEmpty(productFile.FilePath)) return;
-
-    //    var fileUrl = AppendToUrl(productFile.FilePath);
-    //    var whatsAppService = new WhatsappCloudChatService(BotConfig.WhatsappCloudPhoneNumberId,
-    //        BotConfig.WhatsappCloudAccessToken, new AlliedTimbersBot());
-    //    whatsAppService.Send(Thread.ThreadId, new DocumentMessage(fileUrl, $"{productFile.Title}"));
-    //}
-
-    //private string AppendToUrl(string appendString)
-    //{
-    //    string siteUrl = Current.Request.Url.GetLeftPart(UriPartial.Authority);
-    //    return siteUrl + appendString;
-    //}
 
     public void FxSavePaymentMethod(BotMessageConfig config)
     {

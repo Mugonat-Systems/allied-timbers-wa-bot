@@ -42,7 +42,7 @@ public partial class AlliedTimbersBotContext
                     Title = "Branches",
                     Options = items.Select(f => new ListOption
                     {
-                        Title = f.Name,
+                        Title = f.Name.ToEllipsis(20),
                         PostbackText = $"branch {f.Id}",
                         Description = f.PhoneNumber
                     }).ToList(),

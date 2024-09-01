@@ -3,11 +3,123 @@
   "WorkspaceRootPath": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\welcome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\welcome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\feedbackconsultations.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\feedbackconsultations.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\newsevents.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\newsevents.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\operatingtimes.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\operatingtimes.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\branches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\branches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\appointment.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\appointment.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\branches.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\branches.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\customeronboard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\customeronboard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\newsevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\newsevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\alliedtimbersbotcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\alliedtimbersbotcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\welcome.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\welcome.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\news.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\news.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\quotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\quotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\promotions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\promotions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|c:\\mugonat\\chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\promotions.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\productsinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\productsinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\livechat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\livechat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\feedbackconsultations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\feedbackconsultations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\faqs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\faqs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\educational.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\educational.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\consultation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\consultation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\context\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\context\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\recommendation.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\recommendation.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\productsinfo.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\productsinfo.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\alliedtimbers\\bot\\json\\promotions.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{FEC5FC2A-F601-4050-B400-2DC2EE535EAA}|AlliedTimbers\\AlliedTimbers.csproj|solutionrelative:alliedtimbers\\bot\\json\\promotions.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -18,25 +130,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 17,
               "Title": "Promotions.cs",
               "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Promotions.cs",
               "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Promotions.cs",
               "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Promotions.cs",
               "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Promotions.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAkwD4AAAAIAAAA",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAYwEIAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-25T07:45:55.538Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 29,
               "Title": "Promotions.json",
               "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Promotions.json",
               "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Promotions.json",
@@ -45,8 +156,7 @@
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-07-25T07:47:36.819Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -59,6 +169,356 @@
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Products.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Products.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Products.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Products.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Products.cs",
+              "ViewState": "AQIAAB8CAAAAAAAAAAAuwD4CAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T06:59:00.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FeedbackConsultations.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\FeedbackConsultations.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\FeedbackConsultations.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\FeedbackConsultations.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\FeedbackConsultations.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T07:36:38.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OperatingTimes.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\OperatingTimes.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\OperatingTimes.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\OperatingTimes.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\OperatingTimes.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T07:27:57.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NewsEvents.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\NewsEvents.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\NewsEvents.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\NewsEvents.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\NewsEvents.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T07:17:45.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Branches.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Branches.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Branches.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Branches.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Branches.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAQwCwAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:22:05.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Welcome.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Welcome.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Welcome.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Welcome.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Welcome.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBAAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T06:57:47.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Appointment.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Appointment.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Appointment.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Appointment.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\Appointment.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T06:57:00.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Branches.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Branches.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Branches.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Branches.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\Branches.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T07:24:23.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomerOnboard.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\CustomerOnboard.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\CustomerOnboard.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\CustomerOnboard.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\CustomerOnboard.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T07:25:29.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AlliedTimbersBotContext.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\AlliedTimbersBotContext.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\AlliedTimbersBotContext.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\AlliedTimbersBotContext.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\AlliedTimbersBotContext.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAwwDIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T06:58:20.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Welcome.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Welcome.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Welcome.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Welcome.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\Welcome.json",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAAcAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-28T14:07:04.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "News.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\News.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\News.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\News.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\News.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwEcAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:29:57.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NewsEvents.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\NewsEvents.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\NewsEvents.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\NewsEvents.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\NewsEvents.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAywCIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:32:37.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProductsInfo.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\ProductsInfo.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\ProductsInfo.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\ProductsInfo.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\ProductsInfo.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwBwAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T14:35:38.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Quotation.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Quotation.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Quotation.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Quotation.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Quotation.cs",
+              "ViewState": "AQIAAIUBAAAAAAAAAAAmwFcBAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:20:59.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Web.config",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Web.config",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Web.config",
+              "RelativeToolTip": "AlliedTimbers\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-08-28T12:43:58.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Products.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Products.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Products.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Products.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\Products.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-28T14:25:42.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Recommendation.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Recommendation.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Recommendation.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Recommendation.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Recommendation.cs",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:20:52.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "LiveChat.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\LiveChat.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\LiveChat.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\LiveChat.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\LiveChat.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:29:45.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FeedbackConsultations.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\FeedbackConsultations.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\FeedbackConsultations.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\FeedbackConsultations.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\FeedbackConsultations.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwBwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:28:56.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Feedback.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Feedback.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Feedback.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Feedback.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:28:44.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Faqs.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Faqs.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Faqs.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Faqs.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Faqs.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:28:20.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Consultation.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Consultation.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Consultation.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Consultation.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Consultation.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAwwEgAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:01:11.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Educational.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Educational.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Educational.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Educational.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Educational.cs",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAAwEcAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:01:49.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Events.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Events.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Events.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Events.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Events.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAYwH8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T17:02:11.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Recommendation.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Recommendation.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\Recommendation.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\Recommendation.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\Recommendation.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-28T17:17:25.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Appointment.cs",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Context\\Appointment.cs",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Context\\Appointment.cs",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Context\\Appointment.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowDAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T06:56:47.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ProductsInfo.json",
+              "DocumentMoniker": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\ProductsInfo.json",
+              "RelativeDocumentMoniker": "AlliedTimbers\\Bot\\Json\\ProductsInfo.json",
+              "ToolTip": "C:\\mugonat\\Chatbots\\allied-timbers-wa-bot\\AlliedTimbers\\Bot\\Json\\ProductsInfo.json",
+              "RelativeToolTip": "AlliedTimbers\\Bot\\Json\\ProductsInfo.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-28T14:28:18.878Z"
             }
           ]
         }

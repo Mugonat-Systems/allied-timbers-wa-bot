@@ -6,7 +6,7 @@
     "onGenerate": "FxGetFeedbackConsultations",
     "message": {
       "title": "Feedback and Consultation",
-      "caption": "",
+      "caption": "Share feedback or consult with our team for better service",
       "button": "View",
       "sections": [
       ]

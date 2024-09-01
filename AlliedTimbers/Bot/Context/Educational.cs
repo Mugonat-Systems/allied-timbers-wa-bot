@@ -48,9 +48,9 @@ public partial class AlliedTimbersBotContext
                      Title = "Educational content",
                     Options = items.Select(g => new ChatMessageModels.ListOption
                         {
-                            Title = g.Title,
+                            Title = g.Title.ToEllipsis(20),
                             PostbackText = $"educational {g.Id}",
-                            Description = $"{g.Description}\n"
+                            Description = $"{g.Description.ToEllipsis(30)}\n"
                         }).ToList()
                 }
             };
@@ -67,9 +67,9 @@ public partial class AlliedTimbersBotContext
                 Options = Pagination.GetPaged(items, 8)
                     .Select(g => new ChatMessageModels.ListOption
                     {
-                        Title = g.Title,
+                        Title = g.Title.ToEllipsis(20),
                         PostbackText = $"event {g.Id}",
-                        Description = $"{g.Description}\n"
+                        Description = $"{g.Description.ToEllipsis(55)}\n"
                     }).ToList()
             },
             new()
@@ -109,7 +109,7 @@ public partial class AlliedTimbersBotContext
             StringBuilder stringBuilder = new();
             stringBuilder.Append($"Title: {educational.Title}" + "\n\n");
             stringBuilder.Append($"Description: {educational.Description}"+ "\n\n");
-            stringBuilder.Append($"Content: {educational.Content}" + "\n\n");
+            stringBuilder.Append($"Content: {educational.Content.ToEllipsis(1021)}" + "\n\n");
             stringBuilder.Append($"Date: {educational.Date:M/d/yy} \n\n");
             stringBuilder.Append("Type hi to go back to the main menu");
 

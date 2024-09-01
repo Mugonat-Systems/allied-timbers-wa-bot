@@ -341,7 +341,7 @@ public partial class AlliedTimbersBotContext
                     Title = "Branches",
                     Options = items.Select(f => new ChatMessageModels.ListOption
                     {
-                        Title = f.Name,
+                        Title = f.Name.ToEllipsis(20),
                         PostbackText = $"nearBranch {f.Id}",
                         Description = f.PhoneNumber
 

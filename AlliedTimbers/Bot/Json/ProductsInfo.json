@@ -5,8 +5,11 @@
     "trigger": "productsInfo",
     "onGenerate": "FxGetProductsInfo",
     "message": {
-      "title": "Products,Promotions and Recommendations",
-      "caption": "View Products,Promotions and Recommendations",
+      "title": "Products, Promotions and",
+      "caption": [
+        "*Recommendations*",
+        "View Products, Promotions and Recommendations",
+      ],
       "button": "View",
       "sections": [
       ]

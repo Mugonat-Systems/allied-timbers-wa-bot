@@ -48,7 +48,7 @@ public partial class AlliedTimbersBotContext
                      Title = "Promotions",
                     Options = items.Select(g => new ChatMessageModels.ListOption
                         {
-                            Title = g.Name,
+                            Title = g.Name.ToEllipsis(20),
                             PostbackText = $"promotion {g.Id}",
                             Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
                         }).ToList()
@@ -67,7 +67,7 @@ public partial class AlliedTimbersBotContext
                 Options = Pagination.GetPaged(items, 8)
                     .Select(g => new ChatMessageModels.ListOption
                     {
-                        Title = g.Name,
+                        Title = g.Name.ToEllipsis(20),
                         PostbackText = $"promotion {g.Id}",
                         Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
                     }).ToList()

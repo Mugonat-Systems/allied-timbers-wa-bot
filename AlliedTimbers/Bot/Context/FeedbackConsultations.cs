@@ -21,7 +21,7 @@ public partial class AlliedTimbersBotContext
             {
                 new()
                 {
-                    Title = "Feedback and Consultations",
+                    Title = "Feedback & Consultations",
                     Options = new List<ChatMessageModels.ListOption>
                     {
                         new("Feedback", "Give us feedback on how you find our services", "rating"),

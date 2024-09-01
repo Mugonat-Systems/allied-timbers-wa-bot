@@ -2,7 +2,7 @@
   "schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
   "quotations": {
     "type": "list",
-    "trigger": "trussesQuotation|timberQuotation|boardsQuotation|polesQuotation|doorsQuotation",
+    "trigger": "trussesQuotation|timberQuotation|boardsQuotation|polesQuotation|doorsQuotation|",
     "onReceive": "FxQuotationSaveProduct",
     "onGenerate": "FxGetQuotations",
     "message": {
@@ -43,6 +43,7 @@
       "body": "{caption}",
       "buttons": [
         "Make Payment",
+        "New Quotation",
         "Menu"
       ]
     },

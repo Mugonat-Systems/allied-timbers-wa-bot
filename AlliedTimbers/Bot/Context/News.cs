@@ -48,7 +48,7 @@ public partial class AlliedTimbersBotContext
                      Title = "News",
                     Options = items.Select(g => new ChatMessageModels.ListOption
                         {
-                            Title = g.Title,
+                            Title = g.Title.ToEllipsis(20),
                             PostbackText = $"news {g.Id}",
                             Description = $"{g.Date.ToString("MM/dd/yyyy")}\n"
                             //stringBuilder.Append(news.Date.ToString("MM/dd/yyyy") + "\n\n");
@@ -68,7 +68,7 @@ public partial class AlliedTimbersBotContext
                 Options = Pagination.GetPaged(items, 8)
                     .Select(g => new ChatMessageModels.ListOption
                     {
-                        Title = g.Title,
+                        Title = g.Title.ToEllipsis(20),
                         PostbackText = $"news {g.Id}",
                         Description = $"{g.Date}\n"
                     }).ToList()

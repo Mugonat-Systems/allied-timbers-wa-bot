@@ -37,7 +37,7 @@ public partial class AlliedTimbersBotContext
                     {
                         new("Let's Chat", "Talk to us directly", "live chat"),
                         new("FAQs", "Frequently asked questions", "faqs"),
-                        new("Feedback and Consultations", "For for Feedback and Consultations", "feedbackConsultations"),
+                        new("Feedback & Consultations", "For for Feedback and Consultations", "feedbackConsultations"),
                     }
                 }
             };

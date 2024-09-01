@@ -5,11 +5,18 @@
     "trigger": "hie?|hell?o|makadii?|maswerasei|menu|exit",
     "onGenerate": "FxGetMenu",
     "message": {
-      "title": "{greet} {app}",
-      "caption": "{timeOfDay} {user},  how can we help you today?",
-      "button": "View Menu",
-      "sections": [
-      ]
+      "title": "Hello, {user}",
+      "caption": [
+        "*Welcome to Allied Timbers*",
+        "How can we help you today?"
+      ],
+        "button"
+        :
+        "View Menu",
+        "sections"
+        :
+        [
+        ]
     },
     "response": {
       "any": "menu"
@@ -37,7 +44,7 @@
   
   "categorizedQuotations": {
     "type": "list",
-    "trigger": "quotationInfo",
+    "trigger": "quotationInfo|new quotation",
     "onGenerate": "FxGetQuotationInfo",
     "message": {
       "title": "Quotation",

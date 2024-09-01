@@ -6,7 +6,7 @@
     "onGenerate": "FxGetNewsEvents",
     "message": {
       "title": "News and Events",
-      "caption": "",
+      "caption": "Stay updated with the latest news and upcoming events",
       "button": "View",
       "sections": [
       ]
