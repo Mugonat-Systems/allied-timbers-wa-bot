@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -13,7 +14,9 @@ public class PaymentsController: Controller
         // GET: Feedbacks
         public async Task<ActionResult> Index()
         {
-            return View(await db.Payments.ToListAsync());
+        var payments = await db.Payments.OrderByDescending(p => p.Date).ToListAsync();
+
+        return View(payments);
         }
 
 
