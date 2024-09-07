@@ -26,7 +26,7 @@ public partial class AlliedTimbersBotContext
                     {
                         new("Feedback", "Give us feedback on how you find our services", "rating"),
                         new("Consultations", "Request a consultation", "consultationBooking"),
-                        new("Visit Appointment", "Book an appointment", "appointmentBooking")
+                        new("Appointment", "Book by appointment", "appointmentBooking")
                     }
                 },
             };

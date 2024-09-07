@@ -24,7 +24,7 @@ public partial class AlliedTimbersBotContext
                 Title = "Products and Promotions",
                 Options = new List<ChatMessageModels.ListOption>
                 {
-                    new("Product Categories", "Products in our catalog", "categories"),
+                    new("Product Categories", "Products in Store", "categories"),
                     new("Promotions", "View running promotions", "viewPromotions"),
                     new("Products Recommendations", "Products we highly recommend you to purchase.", "productRecommendations"),
                 }
