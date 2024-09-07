@@ -410,30 +410,49 @@ public string FxIsPhoneNumberEntered(BotThread thread)
     }
 }
 
+    private static bool paymentInitiated = false;
+
 public static bool MakePayment(string phone, decimal amount, string channel)
 {
-    var paynow = InitializePaynow();
+    if (paymentInitiated)
+        {
+            // Payment has already been initiated, prevent duplicate payments
+            return false;
+        }
+
+        var paynow = InitializePaynow();
     var payment = CreatePayment(paynow, phone, amount);
+
+        // ste the flag to indicate payment initiation
+        paymentInitiated = true;
     
-    var responseTask = Task.Run(() =>
+    // Initiate the payment request
+        var responseTask = Task.Run(() =>
         paynow.SendMobileAsync(payment, phone, channel));
     var response = responseTask.Result;
 
     if (response.Success())
     {
-        var link = response.RedirectLink();
-        var pollUrl = response.PollUrl();
+            //var link = response.RedirectLink();
+            var pollUrl = response.PollUrl();
 
-        var pollPaymentTask = Task.Run(() =>
-            PollPaymentStatusAsync(paynow, pollUrl));
-        bool pollPaymentResult = pollPaymentTask.Result;
-        return pollPaymentResult;
+            // Poll the payment status for 40 seconds (20 attempts with 2-second intervals)
+            var pollPaymentTask = Task.Run(() =>
+                PollPaymentStatusAsync(paynow, pollUrl));
+            bool pollPaymentResult = pollPaymentTask.Result;
+
+            // Reset the flag after payment processing
+            paymentInitiated = false;
+
+            return pollPaymentResult;
     }
-    else
-    {
-        return false;
+        else
+        {
+            // Reset the flag if payment fails
+            paymentInitiated = false;
+            return false;
+        }
     }
-}
 
 private static Webdev.Payments.Payment CreatePayment(Paynow paynow, string phone, decimal amount)
 {
@@ -483,17 +502,19 @@ private static async Task<bool> PollPaymentStatusAsync(
     {
         var paymentStatus = await paynow.PollTransactionAsync(
             pollUrl);
-        if (paymentStatus.Paid())
+
+            if (paymentStatus.Paid())
         {
             isPaid = true;
             break;
         }
+           
 
-        await Task.Delay(TimeSpan.FromSeconds(2)); // Using Task.Delay instead of Thread.Sleep for async operation
-        
-    }
+            await Task.Delay(TimeSpan.FromSeconds(2)); // Using Task.Delay instead of Thread.Sleep for async operation     
+        }
     return isPaid;
 }
+
 
 private static string GenerateReference(string uniqueId) => $"{uniqueId}({Guid.NewGuid()})";
 
@@ -514,60 +535,52 @@ public BotMessageConfig FxMakePayment(BotMessageConfig config)
         method.ToLower()
         );
 
-    BotMessageConfig responseConfig;
-    TextMessage text = null;
-    ButtonOptionsMessage buttonGroup = null;
-    
-    if (isPaymentSuccessful)
-    {
+        /*BotMessageConfig responseConfig;
+        TextMessage text = null;
+        ButtonOptionsMessage buttonGroup = null;*/
+
+        // Prepare payment data
         var phone = Thread.ThreadId;
         using var dbContext = new ApplicationDbContext();
-        var customer = dbContext.Customers.ToList()
-            .FirstOrDefault(c => c.PhoneNumber == phone);
-        var Payment = Session.Build<Payment>();
-        Payment.CustomerId = customer.Id;
-        Payment.Date = DateTime.Now;
-        Payment.BranchName = Session.GetString("branchName");
-        Payment.Status = "Successful";
-        Payment.Quantity = Session.GetString("quantity");
-        Payment.Product = Session.GetString("ProductName");
-        Payment.Amount = amount;
-        Payment.PaymentMethod = method;
-        Payment.PhoneNumber = phone;
-        Payment.PaymentId = Guid.NewGuid().ToString();
-        dbContext.Payments.Add(Payment);
+        var customer = dbContext.Customers.FirstOrDefault(c => c.PhoneNumber == phone);
+        var payment = Session.Build<Payment>();
+        payment.CustomerId = customer.Id;
+        payment.Date = DateTime.Now;
+        payment.BranchName = Session.GetString("branchName");
+        payment.Amount = amount;
+        payment.PaymentMethod = method;
+        payment.PhoneNumber = phone;
+        payment.Quantity = Session.GetString("quantity");
+        payment.Product = Session.GetString("ProductName");
+        payment.PaymentId = Guid.NewGuid().ToString();
+
+        // Save payment based on success or failure
+        if (isPaymentSuccessful)
+    {
+        
+        payment.Status = "Successful";
+        dbContext.Payments.Add(payment);
         dbContext.SaveChanges();
         
-        buttonGroup = new ButtonOptionsMessage("Payment is successful", "Would you like to return to menu?",
+        var buttonGroup = new ButtonOptionsMessage("Payment is successful", "Would you like to return to menu?",
             new ChatMessageModels.ButtonOption("Menu"));
+            config.Type = "buttons";
+            config.Message = buttonGroup;
         
     }
     else
     {
-        
-        var phone = Thread.ThreadId;
-        using var dbContext = new ApplicationDbContext();
-        var customer = dbContext.Customers.ToList()
-            .FirstOrDefault(c => c.PhoneNumber == phone);
-        var Payment = Session.Build<Payment>();
-        Payment.CustomerId = customer.Id;
-        Payment.Date = DateTime.Now;
-        Payment.BranchName = Session.GetString("branchName");
-        Payment.Status = "Failed";
-        Payment.Amount = amount;
-        Payment.PaymentMethod = method;
-        Payment.PhoneNumber = phone;
-        Payment.Quantity = Session.GetString("quantity");
-        Payment.Product = Session.GetString("ProductName");
-        Payment.PaymentId = Guid.NewGuid().ToString();
-        dbContext.Payments.Add(Payment);
+
+        payment.Status = "Failed";
+        dbContext.Payments.Add(payment);
         dbContext.SaveChanges();
         
-        buttonGroup = new ButtonOptionsMessage("Payment failed", "Would you like to retry?",
+       var buttonGroup = new ButtonOptionsMessage("Payment failed", "Would you like to retry?",
             new ChatMessageModels.ButtonOption("Purchase"), new ChatMessageModels.ButtonOption("Menu"));
-    }
-    config.Type = "buttons";
-    config.Message = buttonGroup;
+            config.Type = "buttons";
+            config.Message = buttonGroup;
+        }
+   
     return config;
 }
     }
