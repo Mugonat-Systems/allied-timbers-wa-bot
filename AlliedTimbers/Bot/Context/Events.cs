@@ -48,9 +48,9 @@ public partial class AlliedTimbersBotContext
                      Title = "Events",
                     Options = items.Select(g => new ChatMessageModels.ListOption
                         {
-                            Title = g.Name,
+                            Title = g.Name.ToEllipsis(21),
                             PostbackText = $"event {g.Id}",
-                            Description = $"{g.Description}\n" + $"{g.Venue}\n" + $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
+                            Description = g.Description.ToEllipsis(21)
                         }).ToList()
                 }
             };
@@ -67,9 +67,9 @@ public partial class AlliedTimbersBotContext
                 Options = Pagination.GetPaged(items, 8)
                     .Select(g => new ChatMessageModels.ListOption
                     {
-                        Title = g.Name,
+                        Title = g.Name.ToEllipsis(21),
                         PostbackText = $"event {g.Id}",
-                        Description = $"{g.Description}\n" + $"{g.Venue}\n" + $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
+                        Description = g.Description.ToEllipsis(21)
                     }).ToList()
             },
             new()
