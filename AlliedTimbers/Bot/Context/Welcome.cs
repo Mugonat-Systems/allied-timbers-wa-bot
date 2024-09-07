@@ -24,9 +24,9 @@ public partial class AlliedTimbersBotContext
                     Title = "Information",
                     Options = new List<ChatMessageModels.ListOption>
                     {
-                        new("Products", "Products in our catalog", "productsInfo"),
+                        new("Products", "Products in Store", "productsInfo"),
                         new("Get a quotation","Get a Quotation for products in stock", "quotationInfo"),
-                        new("Contact us", "Visit our branches or contact them directly", "branchCategories"),
+                        new("Contact us", "Visit our branches or contact branch directly", "branchCategories"),
                         new("News and Events", "View news and updates", "newsEvents"),
                     }
                 },
@@ -56,11 +56,11 @@ public partial class AlliedTimbersBotContext
                 Title = "Categories",
                 Options = new List<ChatMessageModels.ListOption>
                 {
-                    new("Trusses", "Diverse roof truss options cater to project specifications.", "trusses"),
-                    new("Timber Products", "Timber Products", "timber"),
-                    new("Boards and Doors", "Boards and Doors", "boards"),
-                    new("Treated Poles", "Treated Poles", "poles"),
-                    new("Doors", "Doors", "doors")
+                    new("Trusses", "Strong timber frames", "trusses"),
+                    new("Timber Products", "High-quality timber for all your building needs", "timber"),
+                    new("Boards and Doors", "Durable boards and stylish doors for every project", "boards"),
+                    new("Treated Poles", "Long-lasting, termite-resistant treated poles", "poles"),
+                    new("Doors", "Sturdy, elegant doors for any space", "doors")
                 }
             }
         };
@@ -100,7 +100,7 @@ public partial class AlliedTimbersBotContext
                 Title = "Categories",
                 Options = new List<ChatMessageModels.ListOption>
                 {
-                     new("Branches", "Visit our branches or contact them directly", "branches"),
+                     new("Branches", "Visit our branches or contact branch directly", "branches"),
                      new("Operating times", "Check our working hours", "operatingTime"),
                 }
             }
