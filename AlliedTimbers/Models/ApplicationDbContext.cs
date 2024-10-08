@@ -13,6 +13,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<Product> Products { get; set; }
+
+    public DbSet<Account> Accounts { get; set; }
     
     public DbSet<Event> Events { get; set; }
     public DbSet<Payment> Payments { get; set; }

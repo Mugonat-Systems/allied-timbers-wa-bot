@@ -1,0 +1,272 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "account": {
+    "type": "list",
+    "trigger": "account",
+    "onGenerate": "FxGetAccount",
+    "message": {
+      "title": "Account Management",
+      "caption": "Register, update, or delete your account easily",
+      "button": "View",
+      "sections": [
+      ]
+    },
+    "response": {
+      "any": "account"
+    }
+  },
+
+  "register/name": {
+    "type": "text",
+    "trigger": "register/account",
+    "onReceive": "FxSaveName",
+    "message": "Enter your name:",
+    "response": {
+      "any": "register/surname"
+    }
+  },
+
+  "register/surname": {
+    "type": "text",
+    "onReceive": "FxSaveSurname",
+    "message": "Enter your surname:",
+    "response": {
+      "any": "register/email"
+    }
+  },
+
+  "register/email": {
+    "type": "text",
+    "onReceive": "FxSaveEmail",
+    "validate": [ "FxValidateEmail" ],
+    "message": "Enter your email:",
+    "response": {
+      "any": "register/region"
+    }
+  },
+
+  "register/region": {
+    "type": "text",
+    "onReceive": "FxSaveRegion",
+    "message": "Enter your region:",
+    "response": {
+      "any": "register/verify"
+    }
+  },
+
+  "register/verify": {
+    "type": "buttons",
+    "onReceive": "FxSaveRegistrationInfomation",
+    "message": {
+      "title": "Register",
+      "body": [ "Save your details" ],
+      "buttons": [
+        "Save",
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "register/save"
+    }
+  },
+
+  "register/save": {
+    "type": "text",
+    "message": "✅ You have created your account successfully",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+  "register/already": {
+    "type": "text",
+    "message": "❌ You have already created an account",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+  "account/view": {
+    "type": "buttons",
+    "trigger": "update/verify",
+    "template": "FxGetAccountDetails",
+    "message": {
+      "title": "{title}",
+      "body": "{caption}",
+      "buttons": [
+        "Correct ✅",
+        "Update 📄"
+      ]
+    },
+    "response": {
+      "Correct ✅": "account/update/correct",
+      "Update 📄": "account/update/update/name",
+      "any": "account/view"
+    }
+  },
+
+  "account/update/correct": {
+    "type": "text",
+    "message": "Your account details are up to date",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+  "account/update/update/name": {
+    "type": "text",
+    "message": "Enter your name:",
+    "onReceive": "FxUpdateName",
+    "response": {
+      "any": "account/update/update/surname"
+    }
+  },
+
+  "account/update/update/surname": {
+    "type": "text",
+    "message": "Enter your surname:",
+    "onReceive": "FxUpdateSurname",
+    "response": {
+      "any": "account/update/update/email"
+    }
+  },
+
+  "account/update/update/email": {
+    "type": "text",
+    "message": "Enter your email:",
+    "onReceive": "FxUpdateEmail",
+    "validate": [ "FxValidateEmail" ],
+    "response": {
+      "any": "account/update/update/region"
+    }
+  },
+
+  "account/update/update/region": {
+    "type": "text",
+    "message": "Enter your region:",
+    "onReceive": "FxUpdateRegion",
+    "response": {
+      "any": "account/update/verify"
+    }
+  },
+  
+  "account/update/verify": {
+    "type": "buttons",
+    "onReceive": "FxUpdateRegistrationInfomation",
+    "message": {
+      "title": "Update",
+      "body": [ "Save your details" ],
+      "buttons": [
+        "Save",
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "account/update/save"
+    }
+  },
+
+  "account/update/save": {
+    "type": "text",
+    "message": "✅ You have updated your account successfully",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+
+
+
+  "account/update/name": {
+    "type": "text",
+    "trigger": "account/update",
+    "onReceive": "FxSaveName",
+    "message": "Enter your name:",
+    "response": {
+      "any": "account/update/surname"
+    }
+  },
+
+  "account/update/surname": {
+    "type": "text",
+    "onReceive": "FxSaveSurname",
+    "message": "Enter your surname:",
+    "response": {
+      "any": "account/update/email"
+    }
+  },
+
+  "account/update/email": {
+    "type": "text",
+    "onReceive": "FxSaveEmail",
+    "validate": [ "FxValidateEmail" ],
+    "message": "Enter your email:",
+    "response": {
+      "any": "account/update/region"
+    }
+  },
+
+  "account/update/region": {
+    "type": "text",
+    "onReceive": "FxSaveRegion",
+    "message": "Enter your region:",
+    "response": {
+      "any": "register/verify"
+    }
+  },
+
+
+
+  //Delete account
+  "account/delete": {
+    "type": "buttons",
+    "trigger": "delete/account",
+    "message": {
+      "title": "Delete Account",
+      "body": [ "Are you sure you want to delete your account?" ],
+      "buttons": [
+        "Yes",
+        "Menu"
+      ]
+    },
+    "response": {
+      "Yes": "account/delete/confirm",
+      "No": "menu"
+    }
+  },
+
+  "account/delete/confirm": {
+    "type": "buttons",
+    "trigger": "account/delete/confirm",
+    "onReceive": "FxDeleteAccount",
+    "message": {
+      "title": "Delete Account",
+      "body": [ "Confirm to delete" ],
+      "buttons": [
+        "Delete",
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "register/deleted"
+    }
+  },
+
+  "register/deleted": {
+    "type": "text",
+    "trigger": "account/delete/confirm",
+    "message": "✅ Your account has been deleted successfully",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+  "register/doesntExist": {
+    "type": "text",
+    "message": "❌ You do not have an account",
+    "response": {
+      "Menu": "menu"
+    }
+  }
+
+}
