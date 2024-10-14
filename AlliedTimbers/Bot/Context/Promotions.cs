@@ -50,7 +50,7 @@ public partial class AlliedTimbersBotContext
                         {
                             Title = g.Name.ToEllipsis(20),
                             PostbackText = $"promotion {g.Id}",
-                            Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
+                            Description = $"{g.Name}\n\n {g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
                         }).ToList()
                 }
             };
@@ -69,7 +69,7 @@ public partial class AlliedTimbersBotContext
                     {
                         Title = g.Name.ToEllipsis(20),
                         PostbackText = $"promotion {g.Id}",
-                        Description = $"{g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
+                        Description = $"{g.Name}\n\n {g.StartDate:MM/dd/yyyy}" + " - " + $"{g.EndDate:MM/dd/yyyy}"
                     }).ToList()
             },
             new()
