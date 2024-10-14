@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlliedTimbers.Models
 {
@@ -6,6 +7,7 @@ namespace AlliedTimbers.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Customer Id")]
         public int CustomerId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

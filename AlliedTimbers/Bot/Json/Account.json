@@ -86,26 +86,48 @@
     }
   },
 
-  "account/view": {
+  "account/view/available": {
     "type": "buttons",
     "trigger": "update/verify",
+    "message": {
+      "body": [ "View details" ],
+      "buttons": [
+        "View"
+      ]
+    },
+    "response": {
+      "any": "FxCheckAccountDetails"
+    }
+  },
+
+  "account/view/details": {
+    "type": "buttons",
+    //"trigger": "update/verify",
     "template": "FxGetAccountDetails",
     "message": {
       "title": "{title}",
       "body": "{caption}",
       "buttons": [
-        "Correct ✅",
-        "Update 📄"
+        "Confirm",
+        "Update"
       ]
     },
     "response": {
-      "Correct ✅": "account/update/correct",
-      "Update 📄": "account/update/update/name",
-      "any": "account/view"
+      "Confirm": "account/correct",
+      "Update": "account/update/updates",
+      "any": "account/view/details"
     }
   },
 
-  "account/update/correct": {
+  "account/details/missing": {
+    "type": "text",
+    "message": "❌ You do not have an account",
+    "response": {
+      "Menu": "menu"
+    }
+  },
+
+  "account/correct": {
     "type": "text",
     "message": "Your account details are up to date",
     "response": {
@@ -113,7 +135,7 @@
     }
   },
 
-  "account/update/update/name": {
+  "account/update/updates": {
     "type": "text",
     "message": "Enter your name:",
     "onReceive": "FxUpdateName",
