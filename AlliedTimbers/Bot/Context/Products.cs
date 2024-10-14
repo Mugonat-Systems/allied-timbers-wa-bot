@@ -56,7 +56,8 @@ public partial class AlliedTimbersBotContext
 
                         Title = p.Name.ToEllipsis(20),
                         PostbackText = $"product {p.Id}",
-                        Description = p.Description.ToEllipsis(20) + $" ${p.Price}"
+                        Description = p.Name.ToEllipsis(47) + $" ${p.Price}"
+
                     }).ToList()
                 }
             };
@@ -77,7 +78,7 @@ public partial class AlliedTimbersBotContext
                     {
                         Title = p.Name.ToEllipsis(20),
                         PostbackText = $"product {p.Id}",
-                        Description = p.Description.ToEllipsis(20)
+                        Description = p.Name.ToEllipsis(47) + $" ${p.Price}"
                     }).ToList()
             },
             new()
@@ -114,7 +115,7 @@ public partial class AlliedTimbersBotContext
             Session.Set("ProductId", product.Id);
 
             title = $"{product.Name.ToEllipsis(20)}\n";
-            caption = $"{product.Description}";
+            caption = $"{product.Description} \n\n ${product.Price}";
             
             Session.Set("ProductName", product.Name);
             // caption = $"{product.Description} \n\n {product.Requirements}";
