@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "operatingTime": {
+    "type": "buttons",
+    "trigger": "operatingTime",
+    "message": {
+      "title": "Hours of Operation",
+      "body": "Monday to Friday: 8:00AM-4:30PM\nSaturday: 8:00AM-1:00PM",
+      "buttons": [
+        "Menu"
+      ]
+    }
+  }
+}

@@ -1,0 +1,646 @@
+#alpine-app * {
+  scroll-behavior: smooth;
+}
+#alpine-app #inbox, #alpine-app #list, #alpine-app #history, #alpine-app #suggestions {
+  height: 80vh;
+}
+#alpine-app #list .list-body, #alpine-app .box .box-body {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+#alpine-app .box {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+#alpine-app .box .is-dragging {
+  position: absolute;
+  z-index: 20;
+  margin: 2rem;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border: 4px #cecece dotted;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.75);
+  display: flex;
+}
+#alpine-app .box .is-dragging label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+#alpine-app .box .is-dragging input {
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#alpine-app .box .pick-attachment {
+  position: relative;
+}
+#alpine-app .box .pick-attachment input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+#alpine-app .box .border-right {
+  border-right: 1px solid #f4f4f4;
+}
+#alpine-app .box .border-left {
+  border-left: 1px solid #f4f4f4;
+}
+#alpine-app .box.box-solid {
+  border-top: 0;
+}
+#alpine-app .box.box-solid > .box-header .btn.btn-default {
+  background: transparent;
+}
+#alpine-app .box.box-solid > .box-header .btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+#alpine-app .box.box-solid > .box-header a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+#alpine-app .box.box-solid.box-default > .box-header {
+  color: #444;
+  background-color: #f1f1f1;
+}
+#alpine-app .box.box-solid.box-default > .box-header a, #alpine-app .box.box-solid.box-default > .box-header .btn {
+  color: #444;
+}
+#alpine-app .box.box-solid.box-primary {
+  border: 5rem solid #d2d2d2;
+}
+#alpine-app .box.box-solid.box-primary > .box-header {
+  color: #fff;
+  background-color: #003882;
+}
+#alpine-app .box.box-solid.box-primary > .box-header a, #alpine-app .box.box-solid.box-primary > .box-header .btn {
+  color: #fff;
+}
+#alpine-app .box.box-solid > .box-header > .box-tools .btn {
+  border: 0;
+  box-shadow: none;
+}
+#alpine-app .box.box-solid[class*=bg] > .box-header {
+  color: #fff;
+}
+#alpine-app .box .box-group > .box {
+  margin-bottom: 5px;
+}
+#alpine-app .box .knob-label {
+  text-align: center;
+  color: #333;
+  font-weight: 100;
+  font-size: 12px;
+  margin-bottom: 0.3em;
+}
+#alpine-app .box > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#alpine-app .close-icon {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 50%;
+}
+#alpine-app .close-icon:hover {
+  background-color: white;
+  color: red;
+}
+#alpine-app .overlay-wrapper > .overlay, #alpine-app .box > .loading-img, #alpine-app .overlay-wrapper > .loading-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#alpine-app .box .overlay, #alpine-app .overlay-wrapper .overlay {
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+}
+#alpine-app .box .overlay > .fa, #alpine-app .overlay-wrapper .overlay > .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+  color: #000;
+}
+#alpine-app .box .overlay.dark, #alpine-app .overlay-wrapper .overlay.dark {
+  background: rgba(0, 0, 0, 0.5);
+}
+#alpine-app .box-header:before, #alpine-app .box-body:before, #alpine-app .box-footer:before, #alpine-app .box-header:after, #alpine-app .box-body:after, #alpine-app .box-footer:after {
+  content: " ";
+  display: table;
+}
+#alpine-app .box-header:after, #alpine-app .box-body:after, #alpine-app .box-footer:after {
+  clear: both;
+}
+#alpine-app .box-header {
+  color: #444;
+  display: block;
+  padding: 1.25rem;
+  position: relative;
+}
+#alpine-app .box-header.with-border {
+  border-bottom: 1px solid #f4f4f4;
+}
+#alpine-app .box-header .btn-scroll {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  padding: 4px;
+  top: 50%;
+  bottom: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+#alpine-app .collapsed-box .box-header.with-border {
+  border-bottom: none;
+}
+#alpine-app .box-header > .fa, #alpine-app .box-header > .glyphicon, #alpine-app .box-header > .ion {
+  display: inline-block;
+  margin: 0;
+  line-height: 1;
+}
+#alpine-app .box-header .box-title {
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+}
+#alpine-app .box-header .box-subtitle {
+  display: block;
+  font-size: 12px;
+  color: gray;
+}
+#alpine-app .box-header > .fa, #alpine-app .box-header > .glyphicon, #alpine-app .box-header > .ion {
+  margin-right: 5px;
+}
+#alpine-app .box-header > .box-tools {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+#alpine-app .box-header > .box-tools [data-toggle=tooltip] {
+  position: relative;
+}
+#alpine-app .box-header > .box-tools.pull-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+#alpine-app .btn-box-tool {
+  padding: 5px;
+  font-size: 12px;
+  background: transparent;
+  color: #97a0b3;
+}
+#alpine-app .open .btn-box-tool {
+  color: #606c84;
+}
+#alpine-app .btn-box-tool:hover {
+  color: #606c84;
+}
+#alpine-app .btn-box-tool.btn:active {
+  box-shadow: none;
+}
+#alpine-app .box-body {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 10px;
+}
+#alpine-app .no-header .box-body {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+#alpine-app .box-body > .table {
+  margin-bottom: 0;
+}
+#alpine-app .box-body .fc {
+  margin-top: 5px;
+}
+#alpine-app .box-body .full-width-chart {
+  margin: -19px;
+}
+#alpine-app .box-body.no-padding .full-width-chart {
+  margin: -9px;
+}
+#alpine-app .box-body .box-pane {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 3px;
+}
+#alpine-app .box-body .box-pane-right {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 0;
+}
+#alpine-app .box-footer {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top: 1px solid #f4f4f4;
+  padding: 10px;
+  background-color: #fff;
+}
+#alpine-app .direct-chat .box-body {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0.75rem;
+}
+#alpine-app .direct-chat.chat-pane-open .direct-chat-contacts {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#alpine-app .direct-chat-text img, #alpine-app .direct-chat-text video {
+  height: 200px;
+  object-fit: contain;
+}
+#alpine-app .direct-chat-msg, #alpine-app .direct-chat-text {
+  display: block;
+}
+#alpine-app .direct-chat-msg {
+  margin-bottom: 1.5rem;
+  max-width: 80%;
+  width: fit-content;
+}
+#alpine-app .direct-chat-msg:before {
+  content: " ";
+  display: table;
+}
+#alpine-app .direct-chat-msg:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+#alpine-app .direct-chat-text {
+  border-radius: 5px;
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  margin: 5px 0 0 50px;
+  color: #444;
+}
+#alpine-app .direct-chat-text:after, #alpine-app .direct-chat-text:before {
+  position: absolute;
+  right: 100%;
+  top: 15px;
+  border: solid transparent;
+  border-right-color: #f1f1f1;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+#alpine-app .direct-chat-text:after {
+  border-width: 5px;
+  margin-top: -5px;
+}
+#alpine-app .direct-chat-text:before {
+  border-width: 6px;
+  margin-top: -6px;
+}
+#alpine-app .direct-chat-msg.right {
+  margin-left: auto;
+}
+#alpine-app .right .direct-chat-text {
+  margin-right: 50px;
+  margin-left: 0;
+}
+#alpine-app .right .direct-chat-text:after, #alpine-app .right .direct-chat-text:before {
+  right: auto;
+  left: 100%;
+  border-right-color: transparent;
+  border-left-color: #f1f1f1;
+}
+#alpine-app .direct-chat-img {
+  border-radius: 50%;
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+#alpine-app .right .direct-chat-img {
+  float: right;
+}
+#alpine-app .direct-chat-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+#alpine-app .direct-chat-timestamp {
+  color: #999;
+  font-size: 10px;
+}
+#alpine-app .direct-chat-contacts-open .direct-chat-contacts {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#alpine-app .direct-chat-contacts {
+  -webkit-transform: translate(101%, 0);
+  -ms-transform: translate(101%, 0);
+  -o-transform: translate(101%, 0);
+  transform: translate(101%, 0);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 250px;
+  width: 100%;
+  background: #222d32;
+  color: #fff;
+  overflow: auto;
+}
+#alpine-app .contacts-list > li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 0;
+}
+#alpine-app .contacts-list > li:before {
+  content: " ";
+  display: table;
+}
+#alpine-app .contacts-list > li:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+#alpine-app .contacts-list > li:last-of-type {
+  border-bottom: none;
+}
+#alpine-app .contacts-list-img {
+  border-radius: 50%;
+  width: 40px;
+  float: left;
+}
+#alpine-app .contacts-list-info {
+  margin-left: 45px;
+  color: #fff;
+}
+#alpine-app .contacts-list-name, #alpine-app .contacts-list-status {
+  display: block;
+}
+#alpine-app .contacts-list-name {
+  font-weight: 600;
+}
+#alpine-app .contacts-list-status {
+  font-size: 12px;
+}
+#alpine-app .contacts-list-date {
+  color: #aaa;
+  font-weight: normal;
+}
+#alpine-app .contacts-list-msg {
+  color: #999;
+}
+#alpine-app .direct-chat-danger .right > .direct-chat-text {
+  background: #dd4b39;
+  border-color: #dd4b39;
+  color: #fff;
+}
+#alpine-app .direct-chat-danger .right > .direct-chat-text:after, #alpine-app .direct-chat-danger .right > .direct-chat-text:before {
+  border-left-color: #dd4b39;
+}
+#alpine-app .direct-chat-primary .right > .direct-chat-text {
+  background: #003882;
+  border-color: #003882;
+  color: #fff;
+}
+#alpine-app .direct-chat-primary .right > .direct-chat-text:after, #alpine-app .direct-chat-primary .right > .direct-chat-text:before {
+  border-left-color: #003882;
+}
+#alpine-app .direct-chat-warning .right > .direct-chat-text {
+  background: #f39c12;
+  border-color: #f39c12;
+  color: #fff;
+}
+#alpine-app .direct-chat-warning .right > .direct-chat-text:after, #alpine-app .direct-chat-warning .right > .direct-chat-text:before {
+  border-left-color: #f39c12;
+}
+#alpine-app .direct-chat-info .right > .direct-chat-text {
+  background: #00c0ef;
+  border-color: #00c0ef;
+  color: #fff;
+}
+#alpine-app .direct-chat-info .right > .direct-chat-text:after, #alpine-app .direct-chat-info .right > .direct-chat-text:before {
+  border-left-color: #00c0ef;
+}
+#alpine-app .direct-chat-success .right > .direct-chat-text {
+  background: #00a65a;
+  border-color: #00a65a;
+  color: #fff;
+}
+#alpine-app .direct-chat-success .right > .direct-chat-text:after, #alpine-app .direct-chat-success .right > .direct-chat-text:before {
+  border-left-color: #00a65a;
+}
+#alpine-app .nav.nav-pills {
+  margin-bottom: -34px;
+  height: 57px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+#alpine-app .nav.nav-pills .nav-item {
+  display: inline-flex;
+}
+#alpine-app .nav.nav-pills .nav-link {
+  display: inline-block;
+}
+#alpine-app .direct-chat-primary .right > .direct-chat-text {
+  background: #003882;
+  border-color: #003882;
+  color: #fff;
+}
+#alpine-app .direct-chat-primary .right > .direct-chat-text:after, #alpine-app .direct-chat-primary .right > .direct-chat-text:before {
+  border-left-color: #003882;
+}
+#alpine-app .badges .badge {
+  margin-bottom: 2px;
+  border-radius: 12px;
+}
+#alpine-app .list-group-item.header {
+  background: #efefef;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+#alpine-app .chat-input-group {
+  width: 100%;
+  border-radius: 0.5rem;
+  position: relative;
+  background-color: #f1f1f1;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+#alpine-app .chat-input-group textarea {
+  background: none;
+  outline: none;
+  border: none;
+  width: calc(100% - 144px);
+  height: 36px;
+}
+#alpine-app .chat-input-group .chat-input-actions {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#alpine-app .chat-input-group .chat-input-actions .chat-btn {
+  height: 36px;
+  width: 42px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 0.25rem;
+  margin-left: 0.25rem;
+  cursor: pointer;
+}
+#alpine-app .chat-input-group .chat-input-actions .chat-btn:focus, #alpine-app .chat-input-group .chat-input-actions .chat-btn:focus-within {
+  outline: #003985 3px solid;
+}
+#alpine-app .chat-input-group .chat-input-actions .chat-btn label {
+  margin: 0;
+}
+#alpine-app .chat-input-group .chat-input-actions .chat-btn.danger {
+  color: red;
+}
+#alpine-app .chat-input-group .chat-input-actions .chat-btn.primary {
+  background: #003882;
+  color: white;
+}
+#alpine-app .chat-input-group .chat-suggestions {
+  position: absolute;
+  max-height: 300px;
+  z-index: 10;
+  bottom: 3rem;
+  overflow-y: auto;
+  box-shadow: 1px 1px 16px rgba(76, 76, 76, 0.18);
+  border-radius: 0.25rem;
+  width: 60%;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 100ms ease-out;
+}
+#alpine-app .chat-input-group .chat-suggestions a:focus {
+  background-color: rgba(0, 56, 130, 0.1);
+}
+#alpine-app .chat-input-group .chat-suggestions.active {
+  transform: scale(1);
+}
+
+.chat-container {
+  overflow: hidden;
+}
+
+.transition {
+  transition-property: all;
+  transition-timing-function: ease-out;
+}
+
+.duration-1000 {
+  transition-duration: 0.4s;
+}
+
+.translate-x-full {
+  transform: translateX(50%);
+  opacity: 50%;
+}
+
+.translate-x-0 {
+  transform: translateX(0);
+}
+
+.-translate-x-full {
+  transform-origin: top;
+  transform: translateX(-100%);
+  opacity: 25%;
+}
+
+.image-spotlight {
+  position: fixed;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.64);
+  padding: 5rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 200ms ease-in;
+}
+.image-spotlight.active {
+  transform: scale(1);
+  opacity: 1;
+}
+.image-spotlight .image-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
+  border: none;
+  border-radius: 50%;
+}
+.image-spotlight .image {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: contain;
+  background-color: black;
+}
+.image-spotlight .images {
+  overflow: auto;
+  white-space: nowrap;
+  padding-top: 0.5rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.image-spotlight .images::-webkit-scrollbar {
+  display: none;
+}
+.image-spotlight .images img {
+  height: 50px;
+  width: 100px;
+  display: inline-block;
+  border-radius: 0.75rem;
+  margin-left: 0.25rem;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.75;
+}
+.image-spotlight .images img:hover {
+  transform: scale(1.001);
+  opacity: 1;
+}
+.image-spotlight .images img.active {
+  border: 2px orangered solid;
+}
+
+/*# sourceMappingURL=users.css.map */

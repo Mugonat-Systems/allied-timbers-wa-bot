@@ -1,0 +1,66 @@
+﻿<div
+    id="history"
+    x-data="history"
+    x-show="history"
+    x-transition:enter="transition duration-1000"
+    x-transition:enter-start="transform translate-x-full"
+    x-transition:enter-end="transform translate-x-0"
+    x-transition:leave="transition duration-1000"
+    x-transition:leave-start="transform"
+    x-transition:leave-end="transform -translate-x-full"
+    class="box box-primary direct-chat direct-chat-primary">
+
+    <template x-if="status.get(rxStatus.loading, 'dates')">
+        <div class="text-center p-5">
+            <div class="spinner-border text-primary" role="status"></div>
+        </div>
+    </template>
+
+    <div class="box-header with-border">
+        <h3 class="box-title" x-text="'Chat History ' + chat.name">Chat History</h3>
+        <button title="Scroll to bottom" @@click.prevent="chatEvents.dispatch('history', null)" class="btn btn-scroll btn-sm btn-rounded btn-default">
+            <i class="mdi mdi-close"></i>
+        </button>
+    </div>
+    
+    <div class="box-body p-0">
+        <div class="row h-100">
+            <div class="col-md-4 p-0 h-100 overflow-auto">
+                <div class="list-group list-group-flush">
+                    <template x-for="date in dates">
+                        <button @@click.prevent="getChats(date)" class="list-group-item list-group-item-action" :class="history.date === date ? 'list-group-item-light' : ''" x-text="new Date(date).toDateString()"></button>
+                    </template>
+                </div>
+            </div>
+            <div class="col-md-8 h-100 overflow-auto">
+                <template x-if="status.get(rxStatus.loading, 'chats')">
+                    <div class="text-center p-5">
+                        <div class="spinner-border text-primary" role="status"></div>
+                    </div>
+                </template>
+                <template x-if="!messages.length">
+                    <div class="text-center p-5">No history</div>
+                </template>
+                <template x-if="!status.get(rxStatus.loading, 'chats')">
+                    <div x-ref="chat" class="direct-chat-messages py-4">
+                        <template x-for="message in messages">
+                            <div>
+                                <div class="direct-chat-msg" :class="message.sender !== chat.phone ? 'right' : ''">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name" :class="message.sender !== chat.phone ? 'pull-right' : 'pull-left'" x-text="message.sender || 'System'"></span>
+                                        <span class="direct-chat-timestamp" :class="message.sender !== chat.phone ? 'pull-left' : 'pull-right'" x-text="message.time"></span>
+                                    </div>
+                                    <!-- /.direct-chat-info -->
+                                    <img class="direct-chat-img" src="/Content/assets/images/avatar.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text" x-html="toMessageContent(message)"></div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "educational": {
+    "type": "list",
+    "trigger": "viewEducation",
+    "onGenerate": "FxShowEducational",
+    "message": {
+      "title": "Our Educational Content",
+      "caption": "content related to timber products and their uses, tap below to browse",
+      "button": "Browse",
+      "sections": []
+    },
+
+    "response": {
+      "any": "educational"
+    }
+  },
+
+  "educational/details": {
+    "type": "text",
+    "trigger": "educational \\d+",
+    "onGenerate": "FxGetEducational",
+    "message": ""
+  }
+}

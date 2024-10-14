@@ -1,0 +1,84 @@
+﻿@keyframes cloudMove {
+  50% {
+    background-size: 200%;
+  }
+}
+
+.image-layer-three {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-repeat: repeat;
+  background-size: 100%;
+  background-position: center;
+  z-index: 1;
+  animation: cloudMove 60s linear 0s infinite;
+  mix-blend-mode: luminosity;
+}
+
+.got-text *:not(a) {
+  text-shadow: 1px 1px 56px rgba(0, 0, 0, 0.5);
+  color: white !important;
+}
+
+.main-slider-three .container {
+  padding-top: 240px;
+
+  .image-layer-three {
+    background-size: cover; 
+    background-repeat: no-repeat; 
+  }
+}
+
+
+
+// Small devices (landscape phones, 576px and above till next break point)
+@media (min-width: 576px) {
+
+    @keyframes cloudMove {
+        50% {
+            background-size: 200%;
+        }
+    }
+
+    .image-layer-three {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        background-repeat: repeat;
+        background-size: 100%;
+        background-position: center;
+        z-index: 1;
+        animation: cloudMove 60s linear 0s infinite;
+        mix-blend-mode: luminosity;
+    }
+
+    .got-text *:not(a) {
+        text-shadow: 1px 1px 56px rgba(0, 0, 0, 0.5);
+        color: white !important;
+    }
+
+    .main-slider-three .container {
+        padding-top: 240px;
+
+        .image-layer-three {
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    
+}
+
+// Medium devices (tablets, 768px and above till next break point)
+@media (min-width: 768px) {
+    
+}
+
+// Large devices (desktops, 992px and above till next break point)
+@media (min-width: 992px) {
+    
+}

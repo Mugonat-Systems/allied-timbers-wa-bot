@@ -1,0 +1,252 @@
+﻿{
+  "schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "products": {
+    "type": "list",
+    "trigger": "loans|mukando|solar|funeral|trusses|doors|timber|boards|poles|viewCategories",
+    "onGenerate": "FxGetProducts",
+    "message": {
+      "title": "Products",
+      "caption": "View products",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "products"
+    }
+  },
+
+  "viewProduct": {
+    "type": "buttons",
+    "trigger": "product \\d+",
+    "template": "FxGetProduct",
+    "message": {
+      "title": "{title}",
+      "body": "{caption}",
+      "buttons": [
+        "Purchase",
+        "Information"
+      ]
+    },
+    "response": {
+      "any": "FxGotoOption"
+
+    }
+  },
+
+  "info": {
+    "type": "text",
+    "onGenerate": "FxGetProductInfo",
+    "message": ""
+  },
+
+  "applyForm": {
+    "type": "list",
+    "trigger": "purchase|",
+    "onGenerate": "FxNearestBranches",
+    "onReceive": "FxSaveBranchId",
+    "message": {
+      "title": "Our Branches",
+      "caption": "Select your nearest town",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "quantity"
+    }
+  },
+  
+  "quantity": {
+    "type": "text",
+    "onReceive": "FxSaveQuantity",
+    "validate": [ "FxValidateQuantity" ],
+    "message": "Enter quantity",
+    "response": {
+      "any": "purchase"
+    }
+  },
+  
+  "purchase": {
+    "type": "buttons",
+    "onReceive": "FxSavePaymentMethod",
+    "message": {
+      "body": ["Select payment method"],
+      "buttons": [
+        "Ecocash",
+        "Onemoney",
+        "Telecash"
+      ]
+    },
+    "response": {
+      "any": "paymentPhone"
+    }
+  },
+  
+  "paymentAmount": {
+    "type": "text",
+    "onReceive": "FxSaveAmount",
+    "message": "Enter the amount you require",
+    "response": {
+      "any": "paymentPhone"
+    }
+  },
+  "paymentPhone": {
+    "type": "buttons",
+    "message": {
+      "body": ["Enter your billing phone number"],
+      "buttons": [
+        "{FxGetCustomerPhone}",
+        "Enter phone"
+      ]
+    },
+    "response": {
+      "any": "FxIsPhoneNumberEntered"
+    }
+  },
+  "paymentPhoneInput": {
+    "type": "text",
+    "onReceive": "FxSavePhoneNumber",
+    "validate": [ "FxValidatePhoneNo" ],
+    "message": ["Enter your billing phone number eg _2637408447357_"],
+    "response": {
+      "any": "subscription/makePayment"
+    }
+  },
+
+  "subscription/makePayment": {
+    "type": "buttons",
+    "onGenerate": "FxMakePayment",
+    "message": {
+      "body": ["✅ Your payment was successful"],
+      "buttons": [
+        "Menu"
+      ]
+    },
+    "response": {
+      "any": "FxMakePayment"
+    }
+  },
+
+  "paymentStatus": {
+    "type": "text",
+    "onReceive": "FxGetPaymentMethod",
+    "message": "{PaymentStatus}",
+    "response": {
+      "any": "savePayment"
+    }
+  },
+
+  "savePayment": {
+    "type": "text",
+    "message": "",
+    "onReceive": "FxSavePayment",
+    "response": {
+      "any": "menu"
+    }
+  },
+
+  "typeFullName": {
+    "type": "text",
+    "onReceive": "FxSaveName",
+    "message": "Enter your fullname",
+    "response": {
+      "any": "IdNo"
+    }
+  },
+
+  "IdNo": {
+    "type": "text",
+    "onReceive": "FxSaveIdNo",
+    "validate": [ "FxValidateId" ],
+    "message": "Enter your Id number e.g 00123456X00",
+    "response": {
+      "any": "selfiePhoto"
+    }
+  },
+
+  "selfiePhoto": {
+    "type": "text",
+    "meta": "Picture,Selfie",
+    "validate": [ "image" ],
+    "onReceive": "FxSelfiePic",
+    "message": "Please take a selfie/passport size photo",
+    "response": {
+      "any": "phoneNumber"
+    }
+  },
+
+  "phoneNumber": {
+    "type": "text",
+    "validate": [ "FxValidatePhoneNo" ],
+    "onReceive": "FxSavePhoneNumber",
+    "message": "Enter your phone number",
+    "response": {
+      "any": "FxGotoOption"
+    }
+  },
+
+  /*"amount": {
+    "type": "text",
+    "validate": [ "FxValidateAmount" ],
+    "onReceive": "FxSaveAmount",
+    "message": "Enter the amount you require",
+    "response": {
+      "any": "FxFilterLoanType"
+    }
+  },*/
+
+  /*"cashPlan": {
+    "type": "text",
+    "onReceive": "FxSaveCashPan",
+    "message": "Enter cash Plan you require e.g Adult or/and Children Payout",
+    "response": {
+      "any": "previewInput"
+    }
+  },*/
+
+  /*"businessDescription": {
+    "type": "text",
+    "onReceive": "FxSaveBusinessDescription",
+    "message": "Enter a short description about your business / request",
+    "response": {
+      "any": "previewInput"
+    }
+  },*/
+
+  /*"postImage": {
+    "type": "text",
+    "meta": "Picture,PaySlip",
+    "validate": [ "image" ],
+    "onReceive": "FxVerificationPic",
+    "message": "Send a picture of your payslip",
+    "response": {
+      "any": "previewInput"
+    }
+  },*/
+
+  /*"previewInput": {
+    "type": "buttons",
+    "template": "FxPreviewFormData",
+    "onReceive": "FxSaveFormData",
+    "message": {
+      "title": "Confirm Your Details",
+      "body": "{caption}",
+      "buttons": [ "Confirm", "Cancel" ]
+    },
+    "response": {
+      "confirm": "completeApplication",
+      "cancel": "menu"
+    }
+  },*/
+
+  "completeApplication": {
+    "type": "buttons",
+    "message": {
+      "title": "You will be contacted shortly by one of our team members.",
+      "body": "Thank you for using our services 😊.",
+      "buttons": [ "Menu" ]
+
+    }
+  }
+
+
+}

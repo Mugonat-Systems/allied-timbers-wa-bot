@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "feedbackConsultation": {
+    "type": "list",
+    "trigger": "feedbackConsultations",
+    "onGenerate": "FxGetFeedbackConsultations",
+    "message": {
+      "title": "Feedback and Consultation",
+      "caption": "Share feedback or consult with our team for better service",
+      "button": "View",
+      "sections": [
+      ]
+    },
+    "response": {
+      "any": "feedbackConsultation"
+    }
+  }
+}

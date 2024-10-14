@@ -1,0 +1,29 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "rating": {
+    "type": "text",
+    "trigger": "rating",
+    "message": "We value your feedback! How would you rate your recent purchase experience with us? [1-5]",
+    "onReceive": "FxSaveRating",
+    "response": {
+      "any": "feedback"
+    }},
+  "feedback": {
+    "type": "text",
+    "trigger": "feedback",
+    "message": "Tell us how you feel you feel about our services",
+    "onReceive": "FxSaveFeedback",
+    "response": {
+      "any": "thankCustomer"
+    }
+  },
+  "thankCustomer": {
+    "type": "buttons",
+    "message": {
+      "body": "Thank you for your feedback",
+      "buttons": [
+        "Menu"
+      ]
+    }
+  }
+}

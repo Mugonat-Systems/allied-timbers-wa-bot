@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "newsEvents": {
+    "type": "list",
+    "trigger": "newsEvents",
+    "onGenerate": "FxGetNewsEvents",
+    "message": {
+      "title": "News and Events",
+      "caption": "Stay updated with the latest news and upcoming events",
+      "button": "View",
+      "sections": [
+      ]
+    },
+    "response": {
+      "any": "newsEvents"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+﻿@model AlliedTimbers.Models.ChatHistoryReport
+
+@{
+    var gps = new[] { "Very happy", "Satisfied", "Neutral", "Dissatisfied", "Very Disappointed" };
+    var colors = new[] { "success", "info","dark" ,"warning", "danger" };
+    var groups = Model.Ratings
+        .Select(rating => new { rating, code = gps.SingleOrDefault(r => rating.Key.Contains(r)) })
+        .GroupBy(g => g.code, g => g.rating).ToList();
+}
+
+<div class="col-md-7">
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-title"> Recent Statistics</p>
+            <div class="table-responsive">
+                <table class="table">
+                    @foreach (var total in Model.Totals.Where(total => total.Value != "0"))
+                    {
+                        string searchKey;
+                        var mapping = new Dictionary<string, string>
+                        {
+                            {"Total clients", "available"},
+                            {"Recently missed clients", "missed"},
+                            {"Total blocked", "blocked"},
+                        };
+                        
+                        <tr>
+                            <th class="px-0">
+                                @total.Key
+                                @if (mapping.TryGetValue(total.Key, out searchKey))
+                                {
+                                    <a href="/customers/filter/@searchKey">View now</a>
+                                }
+                            </th>
+                            <td>@total.Value</td>
+                        </tr>
+                    }   
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-title"> Client Ratings</p>
+            <div class="table-responsive">
+                <table class="table">
+                    @foreach (var g in groups)
+                    {
+                        <tr>
+                            <th class="px-0">
+                                <span class="bg-@(colors[gps.ToList().IndexOf(g.Key)]) d-inline-block rounded-circle mr-2" style="height: 10px; width: 10px"></span>@g.Key
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        foreach (var total in g.Where(total => total.Value != "0"))
+                        {
+                            <tr>
+                                <td class="px-0">@total.Key</td>
+                                <td>@total.Value</td>
+                            </tr>
+                            
+                        }
+                    }
+                </table>
+            </div>
+        </div> 
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-title">Activity: Chats Closed</p>
+            <div class="table-responsive">
+                <table class="table">
+                    @foreach (var total in Model.UserChatsClosed.Where(total => total.Value != "0"))
+                    {
+                        <tr>
+                            <th class="px-0">@total.Key</th>
+                            <td>@total.Value</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<div class="col-md-5">
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-title">Activity: Frequent Chats</p>
+            <div class="table-responsive">
+                <table class="table">
+                    @foreach (var item in Model.FrequentChats.OrderByDescending(t => int.Parse(t.Value)))
+                    {
+                        <tr class="small">
+                            <td class="px-0">
+                                <a href="/Customers/Chat/@item.Key"></a>@item.Key
+                            </td>
+                            <td>@item.Value instances</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title">Agent Activity</p>
+            <hr>
+            <div class="list-group list-group-flush">
+                @foreach (var item in Model.UserActivity)
+                {
+                    <h5>@item.Key</h5>
+                    <small>@item.Value</small>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</div>

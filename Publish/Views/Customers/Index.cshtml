@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = string.Format("{0} Customers", BotConfig.AppName);
+    Layout = "../Shared/_Layout.cshtml";
+
+    var search = Request.QueryString["search"];
+    var isSearch = !string.IsNullOrEmpty(search);
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                
+                                <div id="alpine-app" x-data="chats" class="row no-gutters">
+                                    <div class="col-4" :class="(history || suggestions) ?  'd-none' : ''">
+                                        <div id="list" class="card">
+                                            <div class="card-header bg-white">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h5 class="card-title mb-0">
+                                                        <template x-if="withNewMessages">
+                                                            <span class="d-inline-block p-1 bg-danger border border-light rounded-circle"></span>
+                                                        </template>
+                                                        @BotConfig.AppName Support
+                                                    </h5>
+                                                    <a class="nav-link" href="#" @@click.prevent="chatEvents.dispatch('refresh')">
+                                                        <template x-if="status.is(rxStatus.loading)">
+                                                            <div class="spinner-border spinner-border-sm" role="status"></div>
+                                                        </template>
+                                                        <template x-if="!status.is(rxStatus.loading)">
+                                                            <i x-else class="mdi mdi-refresh"></i>
+                                                        </template>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <form action="/customers" method="get" class="card-header">
+                                                <div class="input-group">
+                                                    <input name="search" type="search" value="@search" placeholder="Search history..." class="form-control">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                @if (isSearch)
+                                                {
+                                                    <div class="card-text py-2">
+                                                        No result found for "@search". <a href="/customers">Clear search</a>
+                                                    </div>
+                                                }
+                                            </form>
+                                            @Html.Partial("Chat/_ChatList")
+                                        </div>
+                                    </div>
+                                    <div :class="(history || suggestions) ?  'col-12' : 'col-8'">
+                                        <div class="card">
+                                            @Html.Partial("Chat/_ChatInbox")
+                                            @Html.Partial("Chat/_ChatHistory")
+                                            @Html.Partial("Chat/_ChatQuickResponses")
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card card-footer bg-white">
+                                                <a href="#" @@click="suggestions = !suggestions" class=""><i class="mdi mdi-message-settings"></i> Configure quick responses</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="image-spotlight">
+                                    <img class="image" src="" alt="">
+                                    <div class="images"></div>
+                                    <button class="image-close">
+                                        <i class="mdi mdi-close"></i>
+                                    </button>
+                                </div>
+                                
+                                <audio id="not-audio" hidden>
+                                    <source src="~/Content/assets/audio/beyond-doubt-2-581.mp3" type="audio/mp3">
+                                    <source src="~/Content/assets/audio/beyond-doubt-2-581.ogg" type="audio/ogg">
+                                    <source src="~/Content/assets/audio/beyond-doubt-2-581.m4r" type="audio/m4r">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                
+
+                            </div>  
+                        </div>
+                    </div>  
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section head {
+     <link rel="stylesheet" href="/Content/assets/css/users.min.css?v=1.7">
+}
+
+@section scripts {
+    @* Chat dependencies *@
+    <script defer src="/Content/vendors/alpine/persist.min.js"></script>
+    <script defer src="/Content/vendors/alpine/focus.min.js"></script>
+    <script src="/Content/assets/js/chat/chat-utils.js?v=1.7"></script>
+    <script src="/Content/assets/js/chat/chat-data.min.js?v=1.7"></script>
+
+    @* Chat components *@
+    <script src="/Content/assets/js/chat/chat-main.min.js?v=1.7"></script>
+    <script src="/Content/assets/js/chat/chat-list.min.js?v=1.7"></script>
+    <script src="/Content/assets/js/chat/chat-inbox.js?v=1.7"></script>
+    <script src="/Content/assets/js/chat/chat-history.min.js?v=1.7"></script>
+    <script src="/Content/assets/js/chat/chat-suggestions.min.js?v=1.7"></script>
+
+    @* Chat initializer *@
+    <script defer src="/Content/assets/js/chat/chat.min.js?v=1.7"></script>
+
+    @* Alpine driver *@
+    <script defer src="/Content/vendors/alpine/alpine.min.js"></script>
+}
