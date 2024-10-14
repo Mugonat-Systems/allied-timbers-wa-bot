@@ -166,6 +166,23 @@ namespace AlliedTimbers.Bot.Context;
     }*/
 
     //
+
+    public string FxCheckAccountDetails(BotThread thread)
+    {
+        var threadId = Thread.ThreadId;
+        using var dbContext = new ApplicationDbContext();
+        var customer = dbContext.Customers.FirstOrDefault(c => c.PhoneNumber == threadId);
+        var existingAccount = dbContext.Accounts.FirstOrDefault(a => a.CustomerId == customer.Id);
+
+        if (existingAccount != default)
+        {
+            return GetStep("account/view/details");
+        }
+        else
+        {
+            return GetStep("account/details/missing");
+        }
+    }
     public Dictionary<string, string> FxGetAccountDetails(BotThread thread)
     {
 
@@ -184,7 +201,7 @@ namespace AlliedTimbers.Bot.Context;
         if (existingAccount == default)
         {
             title = "No valid account found";
-            caption = "Please register your account";
+            caption = "Please register your account. Type hi to return to menu";
 
         }
         else

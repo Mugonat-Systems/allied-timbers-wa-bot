@@ -25,7 +25,7 @@ public partial class AlliedTimbersBotContext
                     Options = new List<ChatMessageModels.ListOption>
                     {
                         new("Products", "Products in Store", "productsInfo"),
-                        new("Get a quotation","Get a Quotation for products in stock", "quotationInfo"),
+                        //new("Get a quotation","Get a Quotation for products in stock", "quotationInfo"),
                         new("Contact us", "Visit our branches or contact branch directly", "branchCategories"),
                         new("News and Events", "View news and updates", "newsEvents"),
                     }
@@ -38,6 +38,7 @@ public partial class AlliedTimbersBotContext
                         new("Let's Chat", "Talk to us directly", "live chat"),
                         new("FAQs", "Frequently asked questions", "faqs"),
                         new("Feedback & Consultations", "For for Feedback and Consultations", "feedbackConsultations"),
+                        new("Account", "Manage your account", "account")
                     }
                 }
             };
@@ -58,7 +59,7 @@ public partial class AlliedTimbersBotContext
                 {
                     new("Trusses", "Strong timber frames", "trusses"),
                     new("Timber Products", "High-quality timber for all your building needs", "timber"),
-                    new("Boards and Doors", "Durable boards and stylish doors for every project", "boards"),
+                    new("Boards", "Durable boards and stylish doors for every project", "boards"),
                     new("Treated Poles", "Long-lasting, termite-resistant treated poles", "poles"),
                     new("Doors", "Sturdy, elegant doors for any space", "doors")
                 }
