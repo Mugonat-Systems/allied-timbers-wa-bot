@@ -57,7 +57,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        @using (Html.BeginForm("Create", "Products", FormMethod.Post))
+                        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -91,34 +91,15 @@
                                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Image, "Product Image", htmlAttributes: new { @class = "control-label" })
+                                    @*@Html.TextBoxFor(model => model.Image, new { @class = "form-control", type = "file", name = "imageFile" })*@
+                                    <input type="file" name="imageFile" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                </div>
 
                                 <div class="row">
-                                    @*<div class="col-md-5">
-            <details class="mb-3">
-                <summary>Select Files</summary>
-                <fieldset>
-
-                    @foreach (var file in productFiles)
-                    {
-                        if (file.IsChecked == true)
-                        {
-                            <input type="checkbox" name="FileIds"
-                                   value=@file.Id id="@file.Id" multiple disabled checked />
-                            <label for=@file.Id>@file.Name</label><br />
-                        }
-                        else
-                        {
-                            <input type="checkbox" name="FileIds"
-                                   value=@file.Id id="@file.Id" multiple />
-                            <label for=@file.Id>@file.Name</label><br />
-
-                        }
-
-                    }
-
-                </fieldset>
-            </details>
-        </div>*@
+                                   
                                     <div class="col-md-3">
                                         <details class="mb-3">
                                             <summary class="pb-2">Trusses?</summary>
@@ -169,19 +150,7 @@
 
                                                 @foreach (var info in productInfo)
                                                 {
-                                                    @*if (info.IsChecked == true)
-            {
-                <input type="checkbox" name="InfoIds"
-                       value=@info.Id id="@info.Id" multiple disabled checked />
-                <label for=@info.Id>@info.Title</label><br />
-
-            }
-            else
-            {
-                <input type="checkbox" name="InfoIds"
-                       value=@info.Id id="@info.Id" multiple />
-                <label for=@info.Id>@info.Title</label><br />
-            }*@
+                                                  
 
                                                     <input type="checkbox" name="InfoIds"
                                                            value=@info.Id id="@info.Id" />

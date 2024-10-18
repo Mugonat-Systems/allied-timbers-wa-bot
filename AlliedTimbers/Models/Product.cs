@@ -16,16 +16,8 @@ public class Product
     
     public decimal Price { get; set; }
 
-    // [MaxLength(1000)] public string Requirements { get; set; }
+    public string Image { get; set; }
 
-    // [DisplayName("LoanApplication")]
-    // public bool  IsLoan { get; set; }
-    // [DisplayName("Payslip Image")]
-    // public bool IsImageRequired { get; set; }
-    // [DisplayName("MukandoApplication")]
-    // public bool IsMukando { get; set; }
-    // [DisplayName("SolarApplication")]
-    // public bool IsSolar { get; set; }
     public bool IsTrusses { get; set; }
     public bool IsTimber { get; set; }
     public bool IsBoards { get; set; }

@@ -5,39 +5,99 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<style scoped>
+    dd,
+    dl {
+        margin: 0;
+        padding: 0;
+    }
 
-<div>
-    <h4>Product</h4>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    a {
+        color: #333;
+        text-decoration: none;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    dt,
+    b {
+        color: #392C70;
+        font-size: 1.25em;
+        text-transform: uppercase;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    dd {
+        font-size: 1.125em;
+        font-weight: bold;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+    dd {
+        margin-bottom: 1.125em;
+    }
 
-        @* <dt> *@
-        @*     @Html.DisplayNameFor(model => model.Requirements) *@
-        @* </dt> *@
-        @* *@
-        @* <dd> *@
-        @*     @Html.DisplayFor(model => model.Requirements) *@
-        @* </dd> *@
+        dd.description {
+            font-size: 0.9375em;
+            line-height: 1.375em;
+        }
 
-    </dl>
+    .product-image {
+        max-width: 300px; /* Adjust as needed */
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .details-info {
+        margin-left: 20px;
+    }
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Product Details</h4>
+                    <hr />
+
+                    <section class="resource-details">
+                        <div class="product-details">
+                            @if (!string.IsNullOrEmpty(Model.Image))
+                            {
+                                <img src="@Url.Content(Model.Image)" alt="@Model.Name" class="product-image" />
+                            }
+
+                            <dl class="details-info">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </dt>
+                                <dd>
+                                    @string.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", Model.Price)
+                                </dd>
+                            </dl>
+                        </div>
+                    </section>
+
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-warning" })
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
