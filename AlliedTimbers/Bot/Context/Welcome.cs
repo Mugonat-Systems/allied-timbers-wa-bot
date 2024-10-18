@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading;
+using System.Web;
 using AlliedTimbers.Models;
 using Jil;
 using Microsoft.Net.Http.Headers;
@@ -267,5 +269,11 @@ public partial class AlliedTimbersBotContext
             throw new KeyNotFoundException($"The alias ''{alias}'' was not found in the Thread.AliasChatMessages dictionary.");
         }
     
+    }
+
+    public string AppendToUrl(string appendString)
+    {
+        string siteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+        return siteUrl + appendString;
     }
 }

@@ -15,25 +15,37 @@
     }
   },
 
-  "viewProduct": {
-    "type": "buttons",
+  //original code
+  //"viewProduct": {
+    //"type": "buttons",
+    //"trigger": "product \\d+",
+    //"template": "FxGetProduct",
+    //"message": {
+     // "title": "{title}",
+     // "body": "{caption}",
+      //"buttons": [
+       // //"Purchase",
+       // "Products",
+       // "Menu"
+      //]
+    //},
+    //"response": {
+     // "Products": "productsInfo",
+     // "any": "FxGotoOption"
+
+   // }
+  //},
+  "viewProduct/details": {
     "trigger": "product \\d+",
-    "template": "FxGetProduct",
-    "message": {
-      "title": "{title}",
-      "body": "{caption}",
-      "buttons": [
-        //"Purchase",
-        "Products",
-        "Menu"
-      ]
-    },
+    "type": "multiple",
+    "onGenerate": "FxGetProduct",
+    "message": [],
     "response": {
       "Products": "productsInfo",
       "any": "FxGotoOption"
-
     }
   },
+
 
   "info": {
     "type": "text",

@@ -95,7 +95,7 @@ public partial class AlliedTimbersBotContext
         return config;
     }
     
-    public Dictionary<string,string> FxGetProduct(BotThread thread)
+/*    public Dictionary<string,string> FxGetProduct(BotThread thread)
     {
         int.TryParse(Thread.CurrentMessage.Replace("product ", ""),
             out var id);
@@ -115,7 +115,7 @@ public partial class AlliedTimbersBotContext
             Session.Set("ProductId", product.Id);
 
             title = $"{product.Name.ToEllipsis(20)}\n";
-            caption = $"{product.Description} \n\n ${product.Price}";
+            caption = $"{AppendToUrl(product.Image)} \n\n{product.Description} \n\n ${product.Price}";
             
             Session.Set("ProductName", product.Name);
             // caption = $"{product.Description} \n\n {product.Requirements}";
@@ -129,6 +129,39 @@ public partial class AlliedTimbersBotContext
                 {"title", title },
                 {"caption", caption }
             };
+    }*/
+
+    public BotMessageConfig FxGetProduct(BotMessageConfig json)
+    {
+        int.TryParse(Thread.CurrentMessage.Replace("product ", ""),
+            out var id);
+        var product = Database.Products.Find(id);
+
+        if (product == default)
+        {
+            json.Messages = new List<BotMessage> {
+            new TextMessage("The product you have specified may have been deleted"),
+            new TextMessage("Please check again later")
+        };
+        }
+        else {
+
+            Session.Set("ProductId", product.Id);
+            Session.Set("ProductName", product.Name);
+            var url = AppendToUrl(product.Image);
+
+            json.Messages = new List<BotMessage>
+        { 
+            new ImageMessage(url, $"{product.Name} \n\n {product.Description} \n\n ${product.Price}"),
+            new ButtonOptionsMessage("", "Would you like to view other products?",
+                    new ChatMessageModels.ButtonOption("Products"), new ChatMessageModels.ButtonOption("Menu")),
+        };
+            
+            FxGetAmount(product.Id);
+
+        }
+        return json;
+
     }
 
     public BotMessageConfig FxGetProductInfo(BotMessageConfig json)
