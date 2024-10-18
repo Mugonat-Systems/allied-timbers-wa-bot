@@ -23,11 +23,13 @@
       "title": "{title}",
       "body": "{caption}",
       "buttons": [
-        "Purchase",
-        "Information"
+        //"Purchase",
+        "Products",
+        "Menu"
       ]
     },
     "response": {
+      "Products": "productsInfo",
       "any": "FxGotoOption"
 
     }
