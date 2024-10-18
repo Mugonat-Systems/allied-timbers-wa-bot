@@ -157,7 +157,7 @@ namespace AlliedTimbers.Controllers
         [Audit]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit( Product product)
+        public async Task<ActionResult> Edit( Product product, System.Web.HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
@@ -192,10 +192,34 @@ namespace AlliedTimbers.Controllers
                     updateProduct.IsTrusses = product.IsTrusses;
                     updateProduct.IsDoors = product.IsDoors;
                     updateProduct.IsTimber = product.IsTimber;
-                    updateProduct.Image = product.Image;
+
+                    // Handle Image File Upload (if a new image is uploaded)
+                    if (imageFile != null && imageFile.ContentLength > 0)
+                    {
+                        // Generate a unique filename
+                        string fileName = Path.GetFileNameWithoutExtension(imageFile.FileName);
+                        string extension = Path.GetExtension(imageFile.FileName);
+                        fileName = fileName + "_" + DateTime.Now.ToString("yymmssfff") + extension;
+
+                        // Define the path to store the image
+                        string directory = Server.MapPath("~/Images/Products/");
+
+                        if (!Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        string imagePath = Path.Combine(directory, fileName);
+
+                        // Save the new file
+                        imageFile.SaveAs(imagePath);
+
+                        // Update the image path in the database
+                        updateProduct.Image = "/Images/Products/" + fileName;
+                    }
                 }
 
-                _db.Products.AddOrUpdate(updateProduct);
+                // Save the changes_db.Products.AddOrUpdate(updateProduct);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

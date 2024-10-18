@@ -56,156 +56,163 @@
 
                 <div class="card">
                     <div class="card-body">
-                        @using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+                        @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data"}))
                         {
                             @Html.AntiForgeryToken()
 
-                            <div class="form-horizontal">
-                                <h4>Edit Product</h4>
-                                <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.Id)
+                        <div class="form-horizontal">
+                            <h4>Edit Product</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Price, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control", placeholder = "e.g 1.00" }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Image, "Product Image", htmlAttributes: new { @class = "control-label" })
+                                @*@Html.TextBoxFor(model => model.Image, new { @class = "form-control", type = "file", name = "imageFile" })*@
+                                <input type="file" name="imageFile" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+                            <div class="row">
+                                @*<div class="col-md-5">
+                <details>
+                    <summary>Selected Files</summary>
+                    <fieldset>
+                        @foreach (var file in Model.Files)
+                        {
+                            <input type="checkbox" checked name="FileIds"
+                                   value=@file.Id id="@file.Id" multiple />
+                            <label for=@file.Id>@file.Name</label><br />
+                        }
+
+                        @foreach (var unFile in Files)
+                        {
+                            <input type="checkbox" name="FileIds"
+                                   value=@unFile.Id id="@unFile.Id" multiple />
+                            <label for=@unFile.Id>@unFile.Name</label><br />
+                        }
+                    </fieldset>
+                </details>
+            </div>*@
+                                <div class="col-md-3">
+                                    <details class="mb-3">
+                                        <summary class="pb-2">Trusses?</summary>
+                                        <fieldset>
+                                            @Html.CheckBoxFor(model => model.IsTrusses)
+                                        </fieldset>
+                                    </details>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <details class="mb-3">
+                                        <summary class="pb-2">Boards?</summary>
+                                        <fieldset>
+                                            @Html.CheckBoxFor(model => model.IsBoards)
+                                        </fieldset>
+                                    </details>
+                                </div>
+                                <div class="col-md-3">
+                                    <details class="mb-3">
+                                        <summary class="pb-2">Timber Products?</summary>
+                                        <fieldset>
+                                            @Html.CheckBoxFor(model => model.IsTimber)
+                                        </fieldset>
+                                    </details>
+                                </div>
+                                <div class="col-md-3">
+                                    <details class="mb-3">
+                                        <summary class="pb-2">Treated Poles?</summary>
+                                        <fieldset>
+                                            @Html.CheckBoxFor(model => model.IsPoles)
+                                        </fieldset>
+                                    </details>
+                                </div>
+                                <div class="col-md-3">
+                                    <details class="mb-3">
+                                        <summary class="pb-2">Doors?</summary>
+                                        <fieldset>
+                                            @Html.CheckBoxFor(model => model.IsDoors)
+                                        </fieldset>
+                                    </details>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <details class="mb-3">
+                                        <summary>Selected Information</summary>
+                                        <fieldset>
+                                            @foreach (var info in Model.Information)
+                                            {
+                                                <span class="col-md-10">
+                                                    <input type="checkbox" checked name="InfoIds"
+                                                           value=@info.Id id="@info.Id" />
+                                                    <label for=@info.Id>@info.Title</label><br />
+                                                </span>
+
+                                            }
+
+                                            @foreach (var unInfo in Information)
+                                            {
+                                                <span class="col-md-10">
+                                                    <input type="checkbox" name="InfoIds"
+                                                           value=@unInfo.Id id="@unInfo.Id" />
+                                                    <label for=@unInfo.Id>@unInfo.Title</label><br />
+                                                </span>
+
+
+                                            }
+                                        </fieldset>
+                                    </details>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-outline-warning" />
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Price, new
-                                        {
-                                            htmlAttributes = new { @class = "form-control" , placeholder = "e.g 1.00" }
-                                        })
-                                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                
-
-                                <div class="row">
-                                    @*<div class="col-md-5">
-            <details>
-                <summary>Selected Files</summary>
-                <fieldset>
-                    @foreach (var file in Model.Files)
-                    {
-                        <input type="checkbox" checked name="FileIds"
-                               value=@file.Id id="@file.Id" multiple />
-                        <label for=@file.Id>@file.Name</label><br />
-                    }
-
-                    @foreach (var unFile in Files)
-                    {
-                        <input type="checkbox" name="FileIds"
-                               value=@unFile.Id id="@unFile.Id" multiple />
-                        <label for=@unFile.Id>@unFile.Name</label><br />
-                    }
-                </fieldset>
-            </details>
-        </div>*@
-                                    <div class="col-md-3">
-                                        <details class="mb-3">
-                                            <summary class="pb-2">Trusses?</summary>
-                                            <fieldset>
-                                                @Html.CheckBoxFor(model => model.IsTrusses)
-                                            </fieldset>
-                                        </details>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <details class="mb-3">
-                                            <summary class="pb-2">Boards?</summary>
-                                            <fieldset>
-                                                @Html.CheckBoxFor(model => model.IsBoards)
-                                            </fieldset>
-                                        </details>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <details class="mb-3">
-                                            <summary class="pb-2">Timber Products?</summary>
-                                            <fieldset>
-                                                @Html.CheckBoxFor(model => model.IsTimber)
-                                            </fieldset>
-                                        </details>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <details class="mb-3">
-                                            <summary class="pb-2">Treated Poles?</summary>
-                                            <fieldset>
-                                                @Html.CheckBoxFor(model => model.IsPoles)
-                                            </fieldset>
-                                        </details>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <details class="mb-3">
-                                            <summary class="pb-2">Doors?</summary>
-                                            <fieldset>
-                                                @Html.CheckBoxFor(model => model.IsDoors)
-                                            </fieldset>
-                                        </details>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <details class="mb-3">
-                                            <summary>Selected Information</summary>
-                                            <fieldset>
-                                                @foreach (var info in Model.Information)
-                                                {
-                                                    <span class="col-md-10">
-                                                        <input type="checkbox" checked name="InfoIds"
-                                                               value=@info.Id id="@info.Id" />
-                                                        <label for=@info.Id>@info.Title</label><br />
-                                                    </span>
-                                                   
-                                                }
-
-                                                @foreach (var unInfo in Information)
-                                                {
-                                                    <span class="col-md-10">
-                                                        <input type="checkbox" name="InfoIds"
-                                                               value=@unInfo.Id id="@unInfo.Id"  />
-                                                        <label for=@unInfo.Id>@unInfo.Title</label><br />
-                                                    </span>
-                                                   
-
-                                                }
-                                            </fieldset>
-                                        </details>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Save" class="btn btn-outline-warning" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button onclick="window.location.href='@Url.Action("Index", "Products" )'"
-                                                    type="button" class="btn btn-info">
-                                                Cancel
-                                            </button>
-                                        </div>
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button onclick="window.location.href='@Url.Action("Index", "Products" )'"
+                                                type="button" class="btn btn-info">
+                                            Cancel
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         }
                     </div>
                 </div>
