@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using AlliedTimbers.Bot.Context;
@@ -127,7 +128,26 @@ public partial class AlliedTimbersBot : BotJsonEngine
    
     private async Task ProcessMessage(ChatService api, CloudPayload payload)
     {
-        foreach (var change in payload.Entry.SelectMany(s => s.Changes))
+
+
+        var threadId = payload.GetThreadId();
+        var messageText = payload.GetMessage();
+
+
+        var messages = await Talk(threadId,
+                    messageText
+                    );
+
+        foreach (var replyMessage in messages)
+        {
+            await api.Send(threadId, replyMessage);
+
+            if (messages.Count > 1) 
+                System.Threading.Thread.Sleep(1000);
+        }
+
+
+        /*foreach (var change in payload.Entry.SelectMany(s => s.Changes))
         {
             if (change.Value.Messages == null) continue;
             var threadId = payload.GetThreadId();
@@ -153,7 +173,7 @@ public partial class AlliedTimbersBot : BotJsonEngine
                 }
             }
 
-        }
+        }*/
     }
 
     private async Task<string> GetMessageString(Message message,
