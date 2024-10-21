@@ -1,0 +1,98 @@
+{
+  "schema": "https://nuget.mugonat.com/content/botengine/schemas/v2/schema.json",
+  "accommodations": {
+    "type": "list",
+    "trigger": "accommodation",
+    "onGenerate": "FxGetAccommodations",
+    "message": {
+      "title": "Accommodations",
+      "caption": "View accommodations",
+      "button": "Browse",
+      "sections": []
+    },
+    "response": {
+      "any": "accommodations"
+    }
+  },
+
+  "viewAccommodation/details": {
+    "trigger": "accommodation \\d+",
+    "type": "multiple",
+    "onGenerate": "FxGetAccommodation",
+    "message": [],
+    "response": {
+      "Accommodations": "accommodation",
+      "any": "FxGotoOption"
+    }
+  },
+
+  "reserveBooking": {
+    "type": "text",
+    "validate": [ "FxValidateDate" ],
+    "onReceive": "FxSaveBookingCheckInDate",
+    "message": "Enter Check-in date in the format dd/mm/yyyy",
+    "response": {
+      "any": "bookingsCheckout"
+    }
+  },
+
+  //"bookingsDate": {
+  //"type": "text",
+  //"validate": [ "FxValidateDate" ],
+  //"onReceive": "FxSaveBookingCheckInDate",
+  //"message": "Enter Check-in date in the format dd/mm/yyyy",
+  //"response": {
+  //  "any": "bookingsCheckout"
+  // },
+
+  "bookingsCheckout": {
+    "type": "text",
+    "trigger": "bookings/checkout",
+    "onReceive": "FxSaveBookingCheckOutDate",
+    "validate": [ "FxValidateDate" ],
+    "message": "Enter Check-out date in the format dd/mm/yyyy",
+    "response": {
+      "any": "bookings/guests"
+    }
+  },
+  "bookings/guests": {
+    "type": "text",
+    "trigger": "bookings/guests",
+    "onReceive": "FxSaveBookingGuests",
+    "validate": [ "FxValidateQuantity" ],
+    "message": "Enter number of guests",
+    "response": {
+      "any": "bookings/contact/number"
+    }
+  },
+
+  "bookings/contact/number": {
+    "type": "text",
+    "onReceive": "FxSaveBookingContactNumber",
+    "validate": [ "FxValidatePhoneNo" ],
+    "message": "Enter your contact number",
+    "response": {
+      "any": "bookings/contact/email"
+    }
+  },
+
+  "bookings/contact/email": {
+    "type": "text",
+    "onReceive": "FxSaveBookingContactEmail",
+    "validate": [ "FxValidateEmail" ],
+    "message": "Enter your contact email address",
+    "response": {
+      "any": "bookings/submit"
+    }
+  },
+
+  "bookings/submit": {
+    "type": "text",
+    //"onGenerate": "FxSaveBookingSubmit",
+    "message": "Your booking has been submitted, we will get back to you shortly",
+    "response": {
+      "any": "menu"
+    }
+  }
+}
+}
