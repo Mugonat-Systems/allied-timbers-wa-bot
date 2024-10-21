@@ -85,6 +85,7 @@
     <Compile Include="Bot\Channels\Whatsapp.cs" />
     <Compile Include="Bot\Context\Account.cs" />
     <Compile Include="Bot\Context\Appointment.cs" />
+    <Compile Include="Bot\Context\Booking.cs" />
     <Compile Include="Bot\Context\Branches.cs" />
     <Compile Include="Bot\Context\Consultation.cs" />
     <Compile Include="Bot\Context\Educational.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Bot\Context\Recommendation.cs" />
     <Compile Include="Bot\Context\Welcome.cs" />
     <Compile Include="Bot\AlliedTimbersBot.cs" />
+    <Compile Include="Controllers\AccommodationsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AdministratorsController.cs" />
@@ -132,11 +134,13 @@
     <Compile Include="GlobalUsings.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Accommodation.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Audit.cs" />
+    <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Educational.cs" />
     <Compile Include="Models\Event.cs" />
@@ -1051,6 +1055,7 @@
     <Content Include="Content\vendors\iconfonts\ti-icons\fonts\themify.woff" />
     <Content Include="Content\vendors\iconfonts\ti-icons\fonts\themifyd41d.eot" />
     <Content Include="Bot\Json\Account.json" />
+    <Content Include="Bot\Json\Booking.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dropdown_files.js" />
     <Content Include="Scripts\multiple_files.js" />
@@ -1165,6 +1170,11 @@
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\Accommodations\Create.cshtml" />
+    <Content Include="Views\Accommodations\Delete.cshtml" />
+    <Content Include="Views\Accommodations\Details.cshtml" />
+    <Content Include="Views\Accommodations\Edit.cshtml" />
+    <Content Include="Views\Accommodations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

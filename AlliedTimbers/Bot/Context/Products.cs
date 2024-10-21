@@ -237,6 +237,21 @@ public partial class AlliedTimbersBotContext
             return Thread.AliasChatMessages["info"].Step.ToString();
         }
 
+        if (thread.CurrentMessage == "Accommodations")
+        {
+            return Thread.AliasChatMessages["accommodations"].Step.ToString();
+        }
+
+        /*if (thread.CurrentMessage == "Book")
+        {
+            return Thread.AliasChatMessages["bookingsDate"].Step.ToString();
+        }*/
+
+        if (thread.CurrentMessage == "Reserve")
+        {
+            return Thread.AliasChatMessages["reserveBooking"].Step.ToString();
+        }
+
         if (thread.CurrentMessage == "Documents")
         {
             return Thread.AliasChatMessages["documents"].Step.ToString();

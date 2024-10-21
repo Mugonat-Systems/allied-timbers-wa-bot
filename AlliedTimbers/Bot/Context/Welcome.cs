@@ -30,6 +30,7 @@ public partial class AlliedTimbersBotContext
                         //new("Get a quotation","Get a Quotation for products in stock", "quotationInfo"),
                         new("Contact us", "Visit our branches or contact branch directly", "branchCategories"),
                         new("News and Events", "View news and updates", "newsEvents"),
+                        new("Accommodations", "Our Accommodations", "accommodation"),
                     }
                 },
                 new()
@@ -275,5 +276,16 @@ public partial class AlliedTimbersBotContext
     {
         string siteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         return siteUrl + appendString;
+    }
+
+    private List<Accommodation> AccommodationType()
+    {
+        /*if (Thread.CurrentMessage == "accommodation")
+        {
+            Session.Set("booking", Thread.CurrentMessage);
+            return Database.Accommodations.ToList();
+        }*/
+
+        return Database.Accommodations.ToList();
     }
 }
